@@ -33,12 +33,12 @@ import ComplaintList from './components/forms/review/ComplaintsList';
 import DeleteAccountRequests from './components/forms/user/DeleteAccountRequests';
 
 function App() {
-  
+  //<UnauthenticatedUserHomePage />
   return (
     <div>
       <div>HELOOO</div>
         <Routes>
-          <Route path="/" element={<UnauthenticatedUserHomePage />} />
+          <Route path="/" element={<LogIn />} />
           <Route path="/log-in" element={<LogIn />} />
           <Route path="/registration" element={<Registration />} exact/>
           <Route path='/registration/registration-owner' element={<RegistrationOwner/>}/>
