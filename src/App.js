@@ -1,6 +1,5 @@
 import './App.css';
 import {Route, Routes} from 'react-router-dom';
-import Layout from './components/layout/Layout';
 import Registration from './components/forms/user/Registration';
 import LogIn from './components/forms/user/Login';
 import RegistrationOwner from './components/forms/user/RegistrationOwner';
