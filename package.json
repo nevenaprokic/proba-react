@@ -30,6 +30,9 @@
     "react-router-dom": "^6.2.2",
     "react-scripts": "5.0.0",
     "react-show-more-text": "^1.5.2",
+    "react-toastify": "^9.0.4",
+    "read-more-react": "^1.0.10",
+    "toast": "^0.3.47",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
