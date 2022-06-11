@@ -1,0 +1,37 @@
+$content_width: 70vw;
+$light: #FEF5ED;
+$middleGreen: hsl(110, 17%, 71%);
+$darkGrrenGray: #5f6d5f;
+$darkGreen: #99A799;
+$accept: #ADC2A9;
+$orange :#CC7351;
+$paleGreen: #dae0d2;
+
+.requestsContainer{
+    width: $content_width;
+    margin-top: 2%;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 3%;
+    font-family: "Lucida Console", "Courier New", monospace;
+}
+
+.tableContainer{
+    
+   /* background-color: rgb(211, 228, 205, 0.4);*/
+}
+
+.cellTitle{
+    color: $orange;
+}
+
+.textItem{
+    color: "#4D4B4A";
+    font-size: 15px;
+}
+
+.deatilsItem{
+    font-size: 15px;
+    color: $darkGreen;
+    font-style: italic;
+}   

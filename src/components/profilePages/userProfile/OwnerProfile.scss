@@ -1,0 +1,117 @@
+$content_width: 100%;
+$boxTitleColor: #808780;
+$orange :#CC7351;
+$darkGrrenGray: #5f6d5f;
+$transparentLightGreen: rgb(211, 228, 205, 0.4);
+
+// unauth
+$middleGreen: hsl(110, 17%, 71%);
+$profile_page_width: 60%;
+
+.ownerprofileContainer{
+    width: $content_width;
+    margin-top: 2%;
+    margin-left: 50%;
+    padding-left: 3%;
+    padding-right: 3%;
+    padding-bottom: 3%;
+    padding-top: 1%;
+    border-radius: 20px;
+    transform: translateX(-50%);
+    margin-bottom: 7%;
+    background-color: white;
+}
+
+.ownerprofileContainerUnauthUser{
+    width: $profile_page_width;
+    margin-top: 2%;
+    margin-left: 50%;
+    padding-bottom: 3%;
+    padding-top: 3%;
+    border-radius: 20px;
+    transform: translateX(-50%);
+    margin-bottom: 7%;
+    border: solid medium $middleGreen;
+    background-color: white;
+    overflow: auto;
+}
+
+.boxItem{
+    vertical-align: top;
+    display: inline-block;
+    
+}
+
+.boxItemTitle{
+    margin-left: 5%;
+    font-size: 18px;
+    color: gray; 
+}
+
+.adventureAttribute{
+    margin-left: 1%;
+    font-size: 18px;
+    color: gray; 
+}
+
+.boxItemTitle{
+    margin-left: 5%;
+    font-size: 18px;
+    color: gray; 
+    $orange :#CC7351;
+}
+
+.adventureTitle{
+    margin-left: 1%;
+    font-size: 18px;
+    color :#CC7351;
+    font-weight: bold !important;
+    font-style: italic;
+}
+
+.infoBox{
+    padding-left: 5%;
+    padding-top: 5%;
+    padding-right: 5%;
+}
+
+.boxTitle{
+    font-size: 20px;
+    font-style: italic;
+    color: $boxTitleColor
+    
+}
+
+.infoBoxContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    background-color: $transparentLightGreen;
+    height: 100%;
+    border-radius: 5%;
+    margin-bottom: 7%;
+    border: solid thin $darkGrrenGray;
+    overflow: auto;
+}
+
+.boxItemText{
+    font-size: 18px;
+}
+
+.changePassBtn{
+    background-color: #99A799;
+    color: black;
+}
+
+.email{
+    font-size: 20px;
+}
+
+.biograpy{
+    margin-left: 10%;
+}
+
+.penaltiesText{
+    font-size: 15px;
+    color :#CC7351;
+}

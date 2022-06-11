@@ -1,0 +1,106 @@
+@use "@material/button/styles";
+
+$add_form_width: 80%;
+$change_form_width: 50%;
+$light: #FEF5ED;
+$middleGreen: #ADC2A9;
+$darkGreen: #99A799;
+$orange :#CC7351;
+$darkGrrenGray: #5f6d5f;
+
+.changeAdventureForm{
+    width: 50%;
+    margin-left: 50%;
+    border: solid medium #99A799;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 5%;
+    padding-top: 8px;
+    border-radius: 20px;
+    transform: translateX(-50%);
+    color: #CC7351;
+    margin-bottom: 7%;
+    margin-top: 2%;
+    background-color: #fcfcfc;
+}
+
+.list-item{
+    text-align: right;
+}
+
+.formContainer{
+    width: 50%;
+    margin-left: 50%;
+    margin-top: 5%;
+    border: solid medium $darkGreen;
+    padding: 5%;
+    border-radius: 20px;;
+    transform: translateX(-50%);
+    color: $orange;
+    margin-bottom: 7%;
+    // background-color: #FDFFFA;
+    background-color: #fcfcfc;
+}
+
+.nameContainer{
+    width: 90%;
+}
+.uploadGalleryContainer{
+    margin-top: 2%;
+    display: inline-block;
+    vertical-align: top;
+    padding: 2%;
+}
+
+.uploadedImg{
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 10px ;
+    border: solid 0.5px lightgrey;
+    border-radius: 2%;
+    padding-bottom: 2%;
+    
+}
+
+.uploadPhotoLabel{
+    font-size: 14px;
+    color: gray;
+}
+
+.img{
+    display: inline;
+    margin: 5px;
+}
+
+.requiredLabel{
+    color: #990000;
+    font-size: small;
+}
+
+.headerText{
+    color: $darkGrrenGray;
+    font-size: small;
+}
+
+
+.closeFormBtn{
+    font-size: 30px;
+    color: #CC7351;
+    width: 5%;
+    padding-left: 100%;
+    vertical-align: top;
+}
+.titleAdditional{
+    margin-left: 35%;
+    color:#CC7351;
+}
+.MuiContainer-root MuiContainer-maxWidthSm css-91ge7k-MuiContainer-root{
+    width: 80vw !important;
+}
+
+@media (min-width: 600px){
+.css-91ge7k-MuiContainer-root {
+    max-width: 900px !important;
+}
+}
+  

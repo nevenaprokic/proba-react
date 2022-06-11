@@ -1,0 +1,282 @@
+
+$content_width: 100%;
+$profile_page_width: 50%;
+$light: #FEF5ED;
+$middleGreen: hsl(110, 17%, 71%);
+$darkGrrenGray: #5f6d5f;
+$darkGreen: #99A799;
+$orange :#CC7351;
+$paleGreen: #dae0d2;
+
+.adventureProfile{
+    width: $profile_page_width;
+    margin-top: 2%;
+    margin-left: 50%;
+    padding-left: 3%;
+    padding-right: 3%;
+    padding-bottom: 3%;
+    padding-top: 1%;
+    border-radius: 20px;
+    transform: translateX(-50%);
+    margin-bottom: 7%;
+    background-color: white;
+
+}
+
+.specialOffersContainer{
+    border: solid medium $darkGreen;
+    border-radius: 25px;
+    max-width: 90%;
+    margin-left: 5%;
+    background-color: white;
+}
+
+.headerContainer{
+    margin-bottom: -4% ;
+}
+
+.adventureTittle{
+    margin-left: 5%;
+    display: inline-block;
+    vertical-align: middle;
+    width: 45%;
+    font-size: 30px;
+    color: $orange;
+}
+
+.changeBtn{
+    display: inline-block;
+    vertical-align: middle;
+    width: 20%;
+    margin-left: 5%;
+}
+
+.deleteBtn{
+    display: inline-block;
+    vertical-align: middle;
+    width: 20%;
+    margin-left: 5%;
+}
+
+.profileContainer{
+    width: $content_width;
+    margin-left: 50%;
+    border-radius: 5%;
+    transform: translateX(-50%);
+    margin-bottom: 7%;
+
+}
+
+.rightImageBox{
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    height: 100%;
+    border-radius: 30px;
+}
+
+.imagesContainer{
+    height:"100px";
+}
+
+.specialOfferSrollBox{
+    width: 90%;
+    margin-left: 5%;
+    padding: 1%;
+    max-height: 160px;
+    overflow: auto;
+}
+
+.scolledItemsContainer{
+    max-height: 200px;
+    scroll-behavior: auto;
+    width: 100%;
+
+    
+}
+
+.specialOffersTitle{
+    margin-left: 5%;
+    min-width: 150px;
+    margin-bottom: 1%;
+    margin-top: 3%;
+}
+
+.itemText{
+    vertical-align: top;
+    display: inline-block;
+    
+}
+
+.tittle{
+    margin-left: 0%;
+    font-size: 25px;
+   font-weight: bold;
+ 
+
+    
+}
+
+.priceItem{
+    font-size: 20px;
+    font-weight: bold;
+    color: $orange;
+    font-family:  Monaco;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.actionTittle{
+    color: $darkGrrenGray;
+}
+
+.line{
+    color: $darkGreen;
+}
+
+.tittleLine{
+    color: $darkGreen;
+    width: 94%;
+    margin-left: 0%;
+}
+
+.stayDate{
+    display: inline-block;
+    vertical-align: top;
+    font-weight: 500;
+    
+}
+
+.availableDate{
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 24%;
+    font-weight: 500;
+    
+}
+
+.actionButton{
+    display: none;
+    vertical-align: top;
+    margin-left: 70%;
+}
+
+.additioanlServiesItem{
+    font-weight: 500;
+}
+
+.basicInfoContainer{
+    border-radius: 25px;
+    border: solid medium #99A799;
+    max-width: 87%;
+    margin-left: 10%;
+    margin-top: 5%;
+    padding: 20px;
+    margin-bottom: 5%;
+    max-height: 500px;
+    overflow: auto;
+    min-height: 300px;
+    background-color: white;
+}
+
+.aditioanlInfoContainer{
+
+    border-radius: 25px;
+    border: solid medium #99A799;
+    max-width: 87%;
+    margin-left: 3%;
+    margin-top: 5%;
+    padding: 20px;
+    margin-bottom: 5%;
+    max-height: 500px;
+    overflow: auto;
+    min-height: 300px;
+    background-color: white;
+}
+
+.basicBoxItemText{
+    font-size: 15px;
+    font-weight: 500;
+    max-width: 200px;
+}
+
+.basicBoxItem{
+    vertical-align: top;
+    display: inline-block;
+    font-weight: 500;
+    color: $darkGrrenGray;
+    
+}
+
+.basicBoxItemTitle{
+    margin-left: 5%;
+    font-size: 15px;
+    font-weight: 500;
+    color: $orange;
+}
+
+.description{
+   margin-left: 10%;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-line-clamp: 6; /* number of lines to show */
+   -webkit-box-orient: vertical;
+   
+
+}
+
+.cotinueButton{
+    display: none;
+}
+
+.descriptionText{
+    margin-left: 10%;
+}
+
+.tableContainer{
+    width: 100%;
+    border-radius: 25px;
+    margin-top: 2%;
+    max-height: 500px;
+    overflow: auto;
+    min-height: 200px
+}
+
+.pricelistHeader{
+    font-weight: bold; 
+}
+
+.priceListTittle{
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.pricesContainer{
+    border: solid medium $darkGreen;
+    border-radius: 25px;
+    max-width: 90%;
+    margin-left: 5%;
+    padding: 3%;
+    background-color: white;
+}
+
+.basePrice{
+    margin-top: 10px;
+    font-weight: 500;
+    color: $orange;
+    font-size: 18px;
+    margin-left: 2%;
+}
+
+.closeProfileBtn{
+    font-size: 30px;
+    color: #CC7351;
+    width: 5%;
+    float: right;
+}
+.mark{
+    margin-top: 10px;
+    margin-left: 5%;
+}
+ 

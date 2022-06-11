@@ -1,0 +1,50 @@
+$light: #FEF5ED;
+$middleGreen: hsl(110, 17%, 71%);
+$darkGrrenGray: #5f6d5f;
+$darkGreen: #99A799;
+$accept: #ADC2A9;
+$orange :#CC7351;
+$paleGreen: #dae0d2;
+$changeFormWidth: 40%;
+
+.card{
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 5%;
+    border: solid thin $accept;
+    width: 45%;
+}
+
+.css-et1ao3-MuiTypography-root{
+    font-size: large !important;
+}
+
+.graphBtn{
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 2%;
+}
+
+.graphContainer{
+    width: 120%;
+}
+
+.close{
+    vertical-align: middle;
+    display: inline-block;
+    width: 10%;
+}
+
+.formTitle{
+    vertical-align: middle;
+    display: inline-block;
+    width: 65%;
+}
+
+.icon{
+    display: inline-block;
+    vertical-align: middle;
+    width: 15%;
+    margin-left: 0%;
+}
+

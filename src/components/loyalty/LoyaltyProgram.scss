@@ -1,0 +1,89 @@
+$light: #FEF5ED;
+$middleGreen: hsl(110, 17%, 71%);
+$darkGrrenGray: #5f6d5f;
+$darkGreen: #99A799;
+$accept: #ADC2A9;
+$orange :#CC7351;
+$paleGreen: #dae0d2;
+$changeFormWidth: 40%;
+
+.card{
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 5%;
+    border: solid thin $accept;
+    width: 45%;
+}
+
+.css-et1ao3-MuiTypography-root{
+    font-size: large !important;
+}
+
+.categoryBtn{
+    display: inline-block;
+    vertical-align: top;
+    width: 200px;
+    margin-left: 5px;
+}
+
+.categoriesContainer{
+    width: 100%;
+}
+
+.changeContainer{
+    width: $changeFormWidth;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    margin-top: 7%;
+    border-radius: 20px;
+    border: solid medium $middleGreen;
+    padding-left: 3%;
+    padding-right: 3%;
+    padding-bottom: 3%;
+    padding-top: 1%;
+}
+
+.close{
+    vertical-align: middle;
+    display: inline-block;
+    width: 10%;
+}
+
+.formTitle{
+    vertical-align: middle;
+    display: inline-block;
+    width: 65%;
+}
+
+.icon{
+    display: inline-block;
+    vertical-align: middle;
+    width: 15%;
+    margin-left: 0%;
+}
+
+.colorPicker{
+    width: 50%;
+    margin-top: 5%;
+    margin-left: 5%;
+    height: 50%;
+}
+.colorPickerContainer{
+    width: 55%;
+    margin-top: 10%;
+    margin-left: 5%;
+    height: 50%;
+}
+.chooseColor{
+    font-size: 14px;
+    color: gray;
+}
+
+.addBtn{
+    // display: inline-block;
+    // vertical-align: top;
+    float: right;
+    width: 100px;
+    margin-right: 0px;
+}

@@ -1,0 +1,15 @@
+$content_width: 100%;
+
+.adminProfileContainer{
+    width: $content_width;
+    margin-top: 0%;
+    margin-left: 50%;
+    padding: 2%;
+    transform: translateX(-50%);
+    color: gray;
+    margin-bottom: 7%;
+}
+
+.email{
+    font-size: 20px;
+}

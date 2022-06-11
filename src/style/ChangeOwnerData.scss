@@ -1,0 +1,50 @@
+$light: #FEF5ED;
+$middleGreen: hsl(110, 17%, 71%);
+$darkGrrenGray: #5f6d5f;
+$darkGreen: #99A799;
+$orange :#CC7351;
+$paleGreen: #dae0d2;
+$content_width: 35%;
+$pale_white_green: #f2f5f0;
+
+
+.changeDataContainer{
+    max-height: 700px;
+    min-width: 400p;
+    background-color: white;
+    overflow: auto;
+    width: $content_width;
+    margin-top: 5%;
+    margin-left: 50%;
+    padding: 3%;
+    transform: translateX(-50%);
+    border-radius: 20px;
+}
+
+.errorLabel{
+    color: #990000;
+    font-size: small;
+}
+
+.closeBtn{
+    font-size: 30px;
+    color: #CC7351;
+    vertical-align: top;
+    display: inline-block;
+    width: 5%;
+
+}
+
+.tittle{
+
+    vertical-align: bottom;
+    display: inline-block;
+    width: 92%;
+    align-content: center;
+    padding-left: 30%;
+}
+
+
+.header{
+    width: 100%;
+}

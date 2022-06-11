@@ -1,0 +1,124 @@
+$light: #FEF5ED;
+$middleGreen: hsl(110, 17%, 71%);
+$darkGrrenGray: #5f6d5f;
+$darkGreen: #99A799;
+$accept: #ADC2A9;
+$orange :#CC7351;
+$paleGreen: #dae0d2;
+
+h2 {
+  margin: 0;
+  font-size: 16px;
+  color:#CC7351
+}
+.dateItem{
+  padding-left: 25%;
+  width: 100%;
+}
+
+ul {
+  margin: 0;
+  padding: 0 0 0 1.5em;
+}
+
+li {
+  margin: 1.5em 0;
+  padding: 0;
+}
+
+b { /* used for event dates/times koji su prikazani u sidebaru dole*/
+  margin-right: 3px;
+  
+}
+
+.demo-app {
+  display: flex;
+  min-height: 100%;
+  font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+  font-size: 14px;
+}
+
+.demo-app-sidebar {
+  width: 300px;
+  line-height: 1.5;
+  border-right: 1px solid $orange;
+}
+
+.demo-app-sidebar-section {
+  padding: 1em;
+}
+
+.demo-app-main {
+  flex-grow: 1;
+  padding: 3em;
+  width: 50vw;
+  color: $darkGrrenGray;
+  
+}
+
+.headerItem{
+  display: inline-block;
+  vertical-align: top;
+  width: 80%;
+}
+
+.personNumLabel{
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 10px;
+}
+
+.closeBtn{
+  display: inline-block;
+  vertical-align: top;
+  width: 10%;
+}
+
+.reservationDetailsContainer{
+  width: 40%;
+  margin-top: 10%;
+  margin-left: 30%;
+}
+
+.fc { /* the calendar root */
+  max-width: 1100px;
+  margin: 0 auto;
+  
+}
+
+.fc .fc-button{
+    background-color: $accept !important;
+    margin-right: 5px !important;
+}
+
+ .fc-event-main{
+  background-color: $orange;
+  //margin-top: -1%;
+  border: none !important;
+  border-radius: 5px;
+ }
+
+ .fc-direction-ltr .fc-daygrid-event.fc-event-end{
+   border: none !important;
+ }
+
+ .fc .fc-daygrid-day-frame{
+   background-color: white !important;
+ }
+
+ .fc .fc-daygrid-more-link{
+   display: none;
+ }
+
+ .fc-direction-ltr .fc-daygrid-event.fc-event-end{
+   background-color: white !important;
+ }
+
+ .fc-direction-ltr .fc-daygrid-event.fc-event-start, .fc-direction-rtl .fc-daygrid-event.fc-event-end{
+  background-color: white !important;
+  border: none !important;
+ }
+
+ .fc .fc-timegrid-slot{
+   background-color: white !important;
+ }

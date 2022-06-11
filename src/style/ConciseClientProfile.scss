@@ -1,0 +1,12 @@
+$container_width: 60%;
+
+.clientProfileContainer{
+    background-color: white;
+    overflow: auto;
+    width: $container_width;
+    margin-top: 5%;
+    margin-left: 50%;
+    padding: 3%;
+    transform: translateX(-50%);
+    border-radius: 20px;
+}

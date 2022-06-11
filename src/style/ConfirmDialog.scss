@@ -1,0 +1,34 @@
+$light: #FEF5ED;
+$middleGreen: hsl(110, 17%, 71%);
+$darkGrrenGray: #5f6d5f;
+$darkGreen: #99A799;
+$orange :#CC7351;
+$paleGreen: #dae0d2;
+$content_width: 20%;
+$pale_white_green: #f2f5f0;
+
+
+.confirmDialogContainer{
+    height: 20vh;
+    background-color: white;
+    width: $content_width;
+    transform: translateY(90%);
+    border-radius: 20px;
+    margin: auto;
+}
+
+.tittleConfirm{
+    margin-left: 23%;
+    align-content: center;
+    vertical-align: top;
+    display: inline-block;
+    width: 92%;
+    align-content: center;
+    padding-left: 5%;
+    padding-bottom: 5%;
+}
+
+.buttons{
+    padding-top: 5vh;
+    margin-left: 23%;
+}
