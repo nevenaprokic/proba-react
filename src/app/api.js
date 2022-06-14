@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://isa-spring-back.herokuapp.com",
+  baseURL: "https://spring-back-isa-mrs.herokuapp.com",
   headers: {
     "Content-Type": "application/json",
   },
