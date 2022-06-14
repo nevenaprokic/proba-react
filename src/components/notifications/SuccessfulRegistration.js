@@ -1,21 +1,15 @@
-import * as React from 'react';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { FormControl } from '@mui/material';
-import Input from '@mui/material/Input';
-import FormHelperText from '@mui/material/FormHelperText';
+import * as React from "react";
+import Button from "@mui/material/Button";
+import CssBaseline from "@mui/material/CssBaseline";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 export default function SuccessfulRegistration() {
-
-    const goBack = () => {
-        window.location="/";
-      };
-    
+  const goBack = () => {
+    window.location = "/";
+  };
 
   const theme = createTheme({
     palette: {
@@ -36,23 +30,28 @@ export default function SuccessfulRegistration() {
           <Box
             sx={{
               marginTop: 0,
-              display: 'inline',
-              flexDirection: 'column',
-              alignItems: 'center',
-              marginLeft:-5,
-              width: "80%"
-              
+              display: "inline",
+              flexDirection: "column",
+              alignItems: "center",
+              marginLeft: -5,
+              width: "80%",
             }}
           >
-              <div><br/></div>
-              <div className="header">
-                  <div className='tittle'>
-                      <Typography component="h1" variant="h5" sx={{color:"#CC7351"}}>
-                        Successful registration!
-                      </Typography>
-                  </div>                
-                </div>
-             
+            <div>
+              <br />
+            </div>
+            <div className="header">
+              <div className="tittle">
+                <Typography
+                  component="h1"
+                  variant="h5"
+                  sx={{ color: "#CC7351" }}
+                >
+                  Successful registration!
+                </Typography>
+              </div>
+            </div>
+
             <Box sx={{ mt: 3 }}>
               <Button
                 type="submit"
@@ -63,8 +62,10 @@ export default function SuccessfulRegistration() {
               >
                 Back to welcome page
               </Button>
-              
-              <div><br/></div>
+
+              <div>
+                <br />
+              </div>
             </Box>
           </Box>
         </Container>

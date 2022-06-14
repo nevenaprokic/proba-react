@@ -20,10 +20,10 @@ import AddShipPage from "../forms/ship/AddShipPage";
 import WorkingCalendar from "../calendar/WorkingCalendar";
 import ReservationProfile from "../profilePages/reservationProfile/ReservationProfile";
 import Checkout from "../forms/reservations/newQuickReservation/NewQuickReservationForm";
-import NewReservationForm from '../forms/reservations/reservationOwner/NewReservationForm';
-import HomePageGraph from '../graphs/attendanceSchedule/HomePageGraph';
-import MarkForm from '../graphs/marks/MarkForm';
-import IncomeStatement from '../graphs/incomeStatement/IncomeStatement';
+import NewReservationForm from "../forms/reservations/reservationOwner/NewReservationForm";
+import HomePageGraph from "../graphs/attendanceSchedule/HomePageGraph";
+import MarkForm from "../graphs/marks/MarkForm";
+import IncomeStatement from "../graphs/incomeStatement/IncomeStatement";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -94,12 +94,7 @@ export default function ShipOwnerHomePage() {
       secondary: { main: "#9DAB86" },
     },
   });
-  const secondaryTheme = createTheme({
-    palette: {
-      primary: { main: "#9DAB86" },
-      secondary: { main: "#ffffff" },
-    },
-  });
+  
   return (
     <ThemeProvider theme={outerTheme}>
       <MainNavigationHome />
@@ -156,13 +151,15 @@ export default function ShipOwnerHomePage() {
             <br />
             <Box sx={{ flexGrow: 1 }}>
               <Grid item xs={12}>
-                <Search params={params}
+                <Search
+                  params={params}
                   setParams={setParams}
                   type={offerType.SHIP_OWNER}
-                  setOffers={setOffers} />
+                  setOffers={setOffers}
+                />
               </Grid>
             </Box>
-            <Album albumData={offers} setAlbumeData={setOffers}/>
+            <Album albumData={offers} setAlbumeData={setOffers} />
           </TabPanel>
           <TabPanel value={value} index={2}>
             <OwnerProfile />
@@ -174,22 +171,22 @@ export default function ShipOwnerHomePage() {
             <ReservationProfile />
           </TabPanel>
           <TabPanel value={value} index={7}>
-            <NewReservationForm offers={offers} setOffers={setOffers}/>
+            <NewReservationForm offers={offers} setOffers={setOffers} />
           </TabPanel>
           <TabPanel value={value} index={8}>
-            <Checkout offers={offers} setOffers={setOffers}/>
+            <Checkout offers={offers} setOffers={setOffers} />
           </TabPanel>
           <TabPanel value={value} index={10}>
-              <WorkingCalendar offers={offers} setOffers={setOffers}/>
+            <WorkingCalendar offers={offers} setOffers={setOffers} />
           </TabPanel>
           <TabPanel value={value} index={12}>
-            <HomePageGraph/>
+            <HomePageGraph />
           </TabPanel>
           <TabPanel value={value} index={13}>
-            <IncomeStatement/>
+            <IncomeStatement />
           </TabPanel>
           <TabPanel value={value} index={14}>
-            <MarkForm/>
+            <MarkForm />
           </TabPanel>
         </Box>
       </Container>

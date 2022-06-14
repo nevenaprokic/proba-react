@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:8082",
+  baseURL: "https://isa-spring-back.herokuapp.com",
   headers: {
     "Content-Type": "application/json",
   },
@@ -16,7 +16,6 @@ api.interceptors.request.use(
     } catch (e) { }
     if (token) {
       config.headers["Authorization"] = `Bearer ${token}`;
-      console.log(config.headers);
     }
     return config;
   },

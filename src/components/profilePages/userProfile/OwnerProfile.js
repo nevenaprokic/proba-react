@@ -20,34 +20,15 @@ import ChangeOwnerData from "../../forms/user/ChangeOwnerData";
 import Modal from "@mui/material/Modal";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { userType } from "../../../app/Enum";
-import InstructorsAdventures from "../../collections/InstructorsAdventures";
 import { getInstructorByUsername } from "../../../services/InstructorService";
 import { getCottageOwnerByUsername } from "../../../services/CottageOwnerService";
 import AdditionalInfoBox from "./AdditionalInfoBox";
-import HomeIcon from "@mui/icons-material/Home";
 import ChangePassword from "../../forms/user/ChangePassword";
 import DeleteOrderOwner from "../../forms/user/DeleteOrderOwner";
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import AdventureDetails from "../../forms/adventure/AdventureDetails";
-
 
 function OwnerProfile() {
-  const style = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: 400,
-    bgcolor: "background.paper",
-    border: "2px solid #000",
-    boxShadow: 24,
-    p: 4,
-    paleGreen: "#dae0d2",
-  };
-
   const [ownerData, setOwnerData] = useState();
   const [open, setOpen] = useState(false);
-  const [isUnauthUser, setIsUnauthUser] = useState(false);
   const [openPasswordManager, setPasswordManager] = useState(false);
 
   const handleOpenPass = () => setPasswordManager(true);
@@ -105,11 +86,9 @@ function OwnerProfile() {
     setData();
   }, []);
 
-  if (ownerData) {
+  if (!!ownerData) {
     return (
-      <div
-        className={"ownerprofileContainer"}
-      >
+      <div className={"ownerprofileContainer"}>
         <Grid
           container
           component="main"
@@ -123,94 +102,94 @@ function OwnerProfile() {
           <BasicInfoBox basicData={ownerData}></BasicInfoBox>
 
           <Grid item xs={12} sm={1}>
-                <EmailIcon />
-                <br />
-                <br />
-                <LockIcon />
-                <br />
-                <br />
-                <SettingsIcon />
-                <br />
-                <br />
-                <DeleteIcon />
-              </Grid>
+            <EmailIcon />
+            <br />
+            <br />
+            <LockIcon />
+            <br />
+            <br />
+            <SettingsIcon />
+            <br />
+            <br />
+            <DeleteIcon />
+          </Grid>
 
-              <Grid item xs={12} sm={4}>
-                <Typography>
-                  <label className="email">{ownerData.email}</label>
-                  <br />
-                  <br />
-                  <Button
-                    size="small"
-                    sx={{ backgroundColor: "#99A799", color: "black" }}
-                    onClick={handleOpenPass}
-                  >
-                    {" "}
-                    Change password
-                  </Button>
-                  <br />
-                  <br />
-                  <Button
-                    size="small"
-                    sx={{ backgroundColor: "#99A799", color: "black" }}
-                    onClick={handleOpen}
-                  >
-                    {" "}
-                    Change private data
-                  </Button>
-                  <br />
-                  <br />
-                  <Button
-                    size="small"
-                    sx={{ backgroundColor: "#99A799", color: "black" }}
-                    onClick={handleOpenDelete}
-                  >
-                    {" "}
-                    Delete profile
-                  </Button>
-                </Typography>
-              </Grid>
-              <Modal
-                open={openPasswordManager}
-                onClose={handleClosePass}
-                aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description"
-                sx={{ backgroundColor: "rgb(218, 224, 210, 0.6)" }}
+          <Grid item xs={12} sm={4}>
+            <Typography>
+              <label className="email">{ownerData.email}</label>
+              <br />
+              <br />
+              <Button
+                size="small"
+                sx={{ backgroundColor: "#99A799", color: "black" }}
+                onClick={handleOpenPass}
               >
-                <ChangePassword close={handleClosePass}/>
-              </Modal>
-              <Modal
-                open={open}
-                onClose={handleClose}
-                aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description"
-                sx={{ backgroundColor: "rgb(218, 224, 210, 0.6)" }}
+                {" "}
+                Change password
+              </Button>
+              <br />
+              <br />
+              <Button
+                size="small"
+                sx={{ backgroundColor: "#99A799", color: "black" }}
+                onClick={handleOpen}
               >
-                <ChangeOwnerData
-                  currentOwnerData={ownerData}
-                  close={handleClose}
-                  childToParent={childToParent}
-                />
-              </Modal>
-              <Modal
-                open={openDeleteManager}
-                onClose={handleCloseDelete}
-                aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description"
-                sx={{ backgroundColor: "rgb(218, 224, 210, 0.6)" }}
+                {" "}
+                Change private data
+              </Button>
+              <br />
+              <br />
+              <Button
+                size="small"
+                sx={{ backgroundColor: "#99A799", color: "black" }}
+                onClick={handleOpenDelete}
               >
-                <DeleteOrderOwner close={handleCloseDelete} />
-              </Modal>
+                {" "}
+                Delete profile
+              </Button>
+            </Typography>
+          </Grid>
+          <Modal
+            open={openPasswordManager}
+            onClose={handleClosePass}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+            sx={{ backgroundColor: "rgb(218, 224, 210, 0.6)" }}
+          >
+            <ChangePassword close={handleClosePass} />
+          </Modal>
+          <Modal
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+            sx={{ backgroundColor: "rgb(218, 224, 210, 0.6)" }}
+          >
+            <ChangeOwnerData
+              currentOwnerData={ownerData}
+              close={handleClose}
+              childToParent={childToParent}
+            />
+          </Modal>
+          <Modal
+            open={openDeleteManager}
+            onClose={handleCloseDelete}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+            sx={{ backgroundColor: "rgb(218, 224, 210, 0.6)" }}
+          >
+            <DeleteOrderOwner close={handleCloseDelete} />
+          </Modal>
 
-              <AddressInfoBox addressData={ownerData} />
-              <Grid xs={12} sm={5} />
-              <AdditionalInfoBox additionalDate={ownerData} />
+          <AddressInfoBox addressData={ownerData} />
+          <Grid xs={12} sm={5} />
+          <AdditionalInfoBox additionalDate={ownerData} />
 
           <Grid xs={8} sm={8} />
         </Grid>
       </div>
     );
-  }
+  } else return null;
 }
 
 export default OwnerProfile;

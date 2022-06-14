@@ -40,8 +40,7 @@ export default function ChangePassword({ close }) {
     [userType.COTTAGE_OWNER]: sendDeleteRequestCottageOwner,
     [userType.SHIP_OWNER]: sendDeleteRequestShipOwner,
     [userType.CLIENT]: sendDeleteRequestClient,
-    [userType.INSTRUCTOR] : sendDeleteRequestInstructor
-
+    [userType.INSTRUCTOR]: sendDeleteRequestInstructor,
   };
   const onSubmit = (data) => {
     let role = getRoleFromToken();

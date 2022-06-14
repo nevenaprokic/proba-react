@@ -27,14 +27,12 @@ export function arrayToDateString(arr){
     return d;
 }
 
-// format of string: dd/MM/yyyy
 export function stringToDate(dateStr){
   let tokens = dateStr.split('/');
   return arrayToDateString(tokens.reverse());
 }
 
 export function dateDiffInDays(a, b) {
-  // Discard the time and time-zone information.
   a = stringToDate(a);
   b = stringToDate(b);
 

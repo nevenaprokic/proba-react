@@ -9,17 +9,6 @@ import * as React from "react";
 import { useState, useEffect } from "react";
 import PersonIcon from "@mui/icons-material/Person";
 
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: "#99A799",
-    },
-    secondary: {
-      main: "#ADC2A9",
-    },
-  },
-});
-
 function executeOnClick(isExpanded) {}
 
 function BasicAdventureInfiBox({ basicInfo }) {
@@ -34,7 +23,7 @@ function BasicAdventureInfiBox({ basicInfo }) {
     }
     setData();
   }, []);
-  if (addressData) {
+  if (!!addressData) {
     return (
       <div className="basicInfoContainer">
         <div>
@@ -93,7 +82,7 @@ function BasicAdventureInfiBox({ basicInfo }) {
         </div>
       </div>
     );
-  }
+  } else return null;
 }
 
 export default BasicAdventureInfiBox;

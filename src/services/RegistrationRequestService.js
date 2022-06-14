@@ -32,7 +32,7 @@ export function acceptRegistrationRequest(requestId, setRequests){
 }
 
 export function discarRegistrationRequest(requestId, message, setRequests){
-    api //email=" + getUsernameFromToken()
+    api 
     .post("/registration-request/discard?requestId="+ requestId, message)
     .then((responseData) => {
                     setRequests(responseData.data ? responseData.data : {});

@@ -16,9 +16,14 @@ import { offerType } from "../../../app/Enum";
 import { searchInstructors } from "../../../services/InstructorService";
 import { searchAdventureByInstructor } from "../../../services/AdventureService";
 
-export default function Search({ params, setParams, type, setOffers, setSearchMood }) {
+export default function Search({
+  params,
+  setParams,
+  type,
+  setOffers,
+  setSearchMood,
+}) {
   const [error, setError] = useState("");
-
 
   const handleChange = (event) => {
     let {
@@ -34,7 +39,7 @@ export default function Search({ params, setParams, type, setOffers, setSearchMo
       setParams({ ...params, phoneNumber: event.target.value });
     }
   };
-  
+
   let searchOffer = {
     [offerType.COTTAGE]: searchCottages,
     [offerType.SHIP]: searchShips,
@@ -53,7 +58,6 @@ export default function Search({ params, setParams, type, setOffers, setSearchMo
             label="First Name"
             onChange={(event) => {
               setParams({ ...params, firstName: event.target.value });
-              
             }}
             InputLabelProps={{
               shrink: true,
@@ -70,7 +74,6 @@ export default function Search({ params, setParams, type, setOffers, setSearchMo
             }}
             onChange={(event) => {
               setParams({ ...params, name: event.target.value });
-              
             }}
           />
         )}
@@ -111,7 +114,9 @@ export default function Search({ params, setParams, type, setOffers, setSearchMo
             <TextField
               id="phoneNumber"
               label="Phone Number"
-              onChange={(event) => { setParams({ ...params, phoneNumber: event.target.value }); }}
+              onChange={(event) => {
+                setParams({ ...params, phoneNumber: event.target.value });
+              }}
               InputLabelProps={{
                 shrink: true,
               }}
@@ -150,7 +155,6 @@ export default function Search({ params, setParams, type, setOffers, setSearchMo
           }}
         />
       </Grid>
-      {console.log(type)}
 
       <Grid item xs>
         <Button

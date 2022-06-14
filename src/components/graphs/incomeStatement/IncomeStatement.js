@@ -1,4 +1,4 @@
-import {  useState } from "react";
+import { useState } from "react";
 import "../attendanceSchedule/Graph.scss";
 import Grid from "@mui/material/Grid";
 import * as React from "react";
@@ -11,11 +11,17 @@ import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import TextField from "@mui/material/TextField";
 import { toast } from "react-toastify";
-import { getRoleFromToken,getUsernameFromToken } from "../../../app/jwtTokenUtils";
+import {
+  getRoleFromToken,
+  getUsernameFromToken,
+} from "../../../app/jwtTokenUtils";
 import Review from "./Review";
-import { reviewReport, reviewReportAdventure, reviewReportShip } from "../../../services/ReservationService";
+import {
+  reviewReport,
+  reviewReportAdventure,
+  reviewReportShip,
+} from "../../../services/ReservationService";
 import { userType } from "../../../app/Enum";
-
 
 function IncomeStatement() {
   const [report, setReport] = useState([]);
@@ -32,8 +38,7 @@ function IncomeStatement() {
   React.useEffect(() => {
     handleStartDateReport(new Date());
     handleEndDateReport(new Date());
-    
-}, [])
+  }, []);
 
   function checkDate() {
     const currentDate = new Date();
@@ -57,7 +62,11 @@ function IncomeStatement() {
     async function setCheck() {
       let username = getUsernameFromToken();
       let role = getRoleFromToken();
-      const data = await getReportByOwnerEmail[role](valueStartDate, valueEndDate, username);
+      const data = await getReportByOwnerEmail[role](
+        valueStartDate,
+        valueEndDate,
+        username
+      );
       setReportData(!!data ? data.data : {});
       return data;
     }
@@ -72,13 +81,11 @@ function IncomeStatement() {
   const handleStartDateReport = (newValue) => {
     setValueStartDate(newValue);
     setReport([]);
-    
   };
 
   const handleEndDateReport = (newValue) => {
     setValueEndDate(newValue);
     setReport([]);
-   
   };
 
   return (
@@ -132,15 +139,17 @@ function IncomeStatement() {
           </Grid>
         </Box>
 
-        <div style={{ height: "50px", width: "1000px" }}>{!!reportData &&
-        <div>
-          <Review
-            data={reportData}
-            startDate={valueStartDate}
-            endDate={valueEndDate}
-          />
+        <div style={{ height: "50px", width: "1000px" }}>
+          {!!reportData ?(
+            <div>
+              <Review
+                data={reportData}
+                startDate={valueStartDate}
+                endDate={valueEndDate}
+              />
+            </div>
+          ):<></>}
         </div>
-      }</div>
       </LocalizationProvider>
     </div>
   );

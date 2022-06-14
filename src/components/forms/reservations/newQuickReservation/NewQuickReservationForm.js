@@ -24,11 +24,11 @@ import { addDays } from "../../../../services/UtilService";
 import {
   alreadyExistQuickReservationForOffer,
   isAvailablePeriod,
-  makeQuickReservation
+  makeQuickReservation,
 } from "../../../../services/QuickActionService";
 import { isAvailableOffer } from "../../../../services/ReservationService";
-import {getAdventureByInstructorEmail} from '../../../../services/AdventureService';
-import {getShipByShipOwnerEmail} from '../../../../services/ShipService';
+import { getAdventureByInstructorEmail } from "../../../../services/AdventureService";
+import { getShipByShipOwnerEmail } from "../../../../services/ShipService";
 
 const steps = [
   "Selection of offers",
@@ -52,7 +52,7 @@ function checkFirstPage(offer) {
   );
   const currentDate = new Date();
 
-  if (offer.name === '') {
+  if (offer.name === "") {
     toast.error("Offer name is required", {
       position: toast.POSITION.BOTTOM_RIGHT,
       autoClose: 1500,
@@ -132,7 +132,6 @@ export default function Checkout({ offers, setOffers }) {
     startDateReservation: "",
     peopleNum: 0,
     price: 0,
-
   });
   const [additionalServicesInputList, setInputList] = useState([
     { serviceName: "", servicePrice: "" },
@@ -193,7 +192,7 @@ export default function Checkout({ offers, setOffers }) {
     } else if (activeStep == 2) {
       setActiveStep(activeStep + 1);
       makeQuickReservation(offer, additionalServicesInputList);
-    } 
+    }
   };
 
   const handleBack = () => {
@@ -202,8 +201,8 @@ export default function Checkout({ offers, setOffers }) {
 
   let getOffer = {
     [userType.COTTAGE_OWNER]: getCottageByCottageOwnerEmail,
-    [userType.SHIP_OWNER] : getShipByShipOwnerEmail,
-    [userType.INSTRUCTOR] : getAdventureByInstructorEmail
+    [userType.SHIP_OWNER]: getShipByShipOwnerEmail,
+    [userType.INSTRUCTOR]: getAdventureByInstructorEmail,
   };
   let role = getRoleFromToken();
   useEffect(() => {
@@ -221,7 +220,7 @@ export default function Checkout({ offers, setOffers }) {
   function getStepContent(step) {
     switch (step) {
       case 0:
-        return <FirstPage offers={offers} setOffer={setOffer} role={role}/>;
+        return <FirstPage offers={offers} setOffer={setOffer} role={role} />;
       case 1:
         return (
           <SecondPage
@@ -243,8 +242,8 @@ export default function Checkout({ offers, setOffers }) {
         throw new Error("Unknown step");
     }
   }
-  return (
-    !!offers && (
+  if (!!offers) {
+    return (
       <div style={{ width: "70vw" }}>
         <ThemeProvider theme={theme}>
           <Container
@@ -303,6 +302,6 @@ export default function Checkout({ offers, setOffers }) {
           </Container>
         </ThemeProvider>
       </div>
-    )
-  );
+    );
+  } else return null;
 }

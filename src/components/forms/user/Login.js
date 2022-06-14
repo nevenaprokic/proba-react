@@ -17,7 +17,6 @@ import { userType } from "../../../app/Enum";
 import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
 
-//toast.configure();
 const theme = createTheme({
   palette: {
     primary: { main: "#9DAB86" },
@@ -44,7 +43,6 @@ export default function LogIn() {
       .post("auth/login", data)
       .then((res) => {
         const token = res.data.accessToken;
-        // dekodiranje tokena, da dobijes podatke
         localStorage.setItem("user", token);
         openUserHomePage(token);
       })
@@ -56,8 +54,6 @@ export default function LogIn() {
       });
   };
   function openUserHomePage(token) {
-    //prepraviti da se otvara home page za svaku rolu posebno
-    //window.location = "/user-home-page/instructor";
     let homePageLocation = homePages[jwt(token).role.name];
     if (!!homePageLocation) {
       window.location = homePageLocation;
@@ -78,7 +74,8 @@ export default function LogIn() {
             sm={4}
             md={7}
             sx={{
-              backgroundImage: "url(https://www.parkettkaiser.de/media/catalog/product/p/a/parkettkaiser-skaben-fototapete-natur-palmen-blau-gruen-055811_r.jpg?width=265&height=265&store=eu-en&image-type=image)",
+              backgroundImage:
+                "url(https://www.parkettkaiser.de/media/catalog/product/p/a/parkettkaiser-skaben-fototapete-natur-palmen-blau-gruen-055811_r.jpg?width=265&height=265&store=eu-en&image-type=image)",
               backgroundRepeat: "no-repeat",
               backgroundColor: (t) =>
                 t.palette.mode === "light"
@@ -86,7 +83,7 @@ export default function LogIn() {
                   : t.palette.grey[900],
               backgroundSize: "cover",
               backgroundPosition: "center",
-                  }}
+            }}
           />
           <Grid
             item

@@ -32,8 +32,9 @@ export default function OfferList({type, offers, setOffers, setLastSearchedOffer
         setData();
     }, [])
 
-    if(offers){
-      return(<Container sx={{ py: 8 }} maxWidth="md">
+    if(!!offers){
+      return(
+      <Container sx={{ py: 8 }} maxWidth="md">
           <Grid container spacing={4}>
             {offers.map((offer) => (
               <Grid item key={offer.id + " " + offer.email} xs={12} sm={6} md={4}>
@@ -41,7 +42,9 @@ export default function OfferList({type, offers, setOffers, setLastSearchedOffer
               </Grid>
             ))}
           </Grid>
-        </Container>);
-      
+        </Container>
+        );      
+    }else{
+      return (<></>);
     }
 }

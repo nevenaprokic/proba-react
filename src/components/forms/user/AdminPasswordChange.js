@@ -1,21 +1,18 @@
-import * as React from 'react';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { FormControl } from '@mui/material';
+import * as React from "react";
+import Button from "@mui/material/Button";
+import CssBaseline from "@mui/material/CssBaseline";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { FormControl } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { useRef } from "react";
-import Input from '@mui/material/Input';
-import FormHelperText from '@mui/material/FormHelperText';
-import { firstLoginChangePassword } from '../../../services/AdminService';
+import Input from "@mui/material/Input";
+import FormHelperText from "@mui/material/FormHelperText";
 
-
-export default function AdminPasswordChange({close}) {
-
+export default function AdminPasswordChange({ close }) {
   const theme = createTheme({
     palette: {
       primary: {
@@ -27,14 +24,17 @@ export default function AdminPasswordChange({close}) {
     },
   });
 
-  const { register, handleSubmit, formState: { errors }, watch } = useForm({});
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    watch,
+  } = useForm({});
 
   const password = useRef({});
   password.current = watch("newPassword1", "");
 
-  const onSubmit = (data) => {
-      
-  }
+  const onSubmit = (data) => {};
 
   return (
     <div className="changeDataContainer" id="changeDataContainer">
@@ -44,65 +44,92 @@ export default function AdminPasswordChange({close}) {
           <Box
             sx={{
               marginTop: 0,
-              display: 'inline',
-              flexDirection: 'column',
-              alignItems: 'center',
-              marginLeft:-5,
-              width: "120%"
-              
+              display: "inline",
+              flexDirection: "column",
+              alignItems: "center",
+              marginLeft: -5,
+              width: "120%",
             }}
           >
-              <div><br/></div>
-              <div className="header">
-                  <div className='tittle'>
-                      <Typography component="h1" variant="h5" sx={{color:"#CC7351"}}>
-                        Change password
-                      </Typography>
-                  </div>
-                  <div className="closeBtn" >
-                    <Button size="large" sx={{}} onClick={ () => close() } >x</Button>
-                  </div>
-                 
-                </div>
-             
-            <Box component="form" noValidate onSubmit={handleSubmit(onSubmit)} sx={{ mt: 3 }}>
-              <Grid container spacing={2}>
-              <FormControl variant="standard" sx={{ m: 1, mt: 3, width: '35ch' }}>
-                  <Input 
-                  name="oldPassword"
-                  id="oldPassword"
-                  type="password"
-                   {...register("oldPassword")}
-                   />
-                <FormHelperText id="standard-weight-helper-text">Old password</FormHelperText>
-              </FormControl>
-              <FormControl variant="standard" sx={{ m: 1, mt: 3, width: '35ch' }}>
-                  <Input 
-                  name="newPassword1"
-                  id="newPassword1"
-                  type="password"
-                   {...register("newPassword1")}/>
-                <FormHelperText id="standard-weight-helper-text">New password</FormHelperText>
-              </FormControl>
+            <div>
+              <br />
+            </div>
+            <div className="header">
+              <div className="tittle">
+                <Typography
+                  component="h1"
+                  variant="h5"
+                  sx={{ color: "#CC7351" }}
+                >
+                  Change password
+                </Typography>
+              </div>
+              <div className="closeBtn">
+                <Button size="large" sx={{}} onClick={() => close()}>
+                  x
+                </Button>
+              </div>
+            </div>
 
-              <FormControl variant="standard" sx={{ m: 1, mt: 3, width: '35ch' }}>
-                  <Input 
-                  name="newPassword2"
-                  id="newPassword2"
-                  type="password"
-                  required
-                   {...register("newPassword2", {
-                    validate: value =>
-                      value === password.current || "Passwords don't match"
-                  })}/>
-                <FormHelperText id="standard-weight-helper-text">Confirm new password</FormHelperText>
-                {errors.newPassword2 && (
+            <Box
+              component="form"
+              noValidate
+              onSubmit={handleSubmit(onSubmit)}
+              sx={{ mt: 3 }}
+            >
+              <Grid container spacing={2}>
+                <FormControl
+                  variant="standard"
+                  sx={{ m: 1, mt: 3, width: "35ch" }}
+                >
+                  <Input
+                    name="oldPassword"
+                    id="oldPassword"
+                    type="password"
+                    {...register("oldPassword")}
+                  />
+                  <FormHelperText id="standard-weight-helper-text">
+                    Old password
+                  </FormHelperText>
+                </FormControl>
+                <FormControl
+                  variant="standard"
+                  sx={{ m: 1, mt: 3, width: "35ch" }}
+                >
+                  <Input
+                    name="newPassword1"
+                    id="newPassword1"
+                    type="password"
+                    {...register("newPassword1")}
+                  />
+                  <FormHelperText id="standard-weight-helper-text">
+                    New password
+                  </FormHelperText>
+                </FormControl>
+
+                <FormControl
+                  variant="standard"
+                  sx={{ m: 1, mt: 3, width: "35ch" }}
+                >
+                  <Input
+                    name="newPassword2"
+                    id="newPassword2"
+                    type="password"
+                    required
+                    {...register("newPassword2", {
+                      validate: (value) =>
+                        value === password.current || "Passwords don't match",
+                    })}
+                  />
+                  <FormHelperText id="standard-weight-helper-text">
+                    Confirm new password
+                  </FormHelperText>
+                  {errors.newPassword2 && (
                     <p style={{ color: "#ED6663" }}>
                       {errors.newPassword2.message}
                     </p>
                   )}
-              </FormControl>
-              
+                </FormControl>
               </Grid>
               <Button
                 type="submit"
@@ -112,8 +139,10 @@ export default function AdminPasswordChange({close}) {
               >
                 Confirm changes
               </Button>
-              
-              <div><br/></div>
+
+              <div>
+                <br />
+              </div>
             </Box>
           </Box>
         </Container>

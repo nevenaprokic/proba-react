@@ -7,21 +7,26 @@ import BoyIcon from "@mui/icons-material/Boy";
 import AdditionalServices from "../../addtitionaServices/AdditionalServices";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
-import '../../../../style/ReservationForm.scss';
+import "../../../../style/ReservationForm.scss";
 
-export default function SecondPage({setOffer, additionalServicesInputList, setInputList, register, errors}) {
+export default function SecondPage({
+  setOffer,
+  additionalServicesInputList,
+  setInputList,
+  register,
+  errors,
+}) {
   const [value, setValue] = React.useState(new Date());
 
   const handleChangePeopleNum = (e) => {
-    setOffer(prevState => {
-      return{...prevState, peopleNum:e.target.value}
-    })
+    setOffer((prevState) => {
+      return { ...prevState, peopleNum: e.target.value };
+    });
   };
   const handleChangePrice = (e) => {
-    setOffer(prevState => {
-      return{...prevState, price:e.target.value}
-    })
-    
+    setOffer((prevState) => {
+      return { ...prevState, price: e.target.value };
+    });
   };
 
   const handleChange = (newValue) => {

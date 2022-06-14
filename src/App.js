@@ -1,5 +1,6 @@
 import './App.css';
 import {Route, Routes} from 'react-router-dom';
+import Layout from './components/layout/Layout';
 import Registration from './components/forms/user/Registration';
 import LogIn from './components/forms/user/Login';
 import RegistrationOwner from './components/forms/user/RegistrationOwner';
@@ -33,12 +34,10 @@ import ComplaintList from './components/forms/review/ComplaintsList';
 import DeleteAccountRequests from './components/forms/user/DeleteAccountRequests';
 
 function App() {
-  //<UnauthenticatedUserHomePage />
   return (
     <div>
-      <div>HELOOO</div>
         <Routes>
-          <Route path="/" element={<LogIn />} />
+          <Route path="/" element={<UnauthenticatedUserHomePage />} />
           <Route path="/log-in" element={<LogIn />} />
           <Route path="/registration" element={<Registration />} exact/>
           <Route path='/registration/registration-owner' element={<RegistrationOwner/>}/>

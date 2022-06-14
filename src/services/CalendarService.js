@@ -108,7 +108,7 @@ export function getQuickActionDetails(actionId){
 function renderEvent(selectInfo){
     let calendarApi = selectInfo.view.calendar
 
-    calendarApi.unselect() // clear date selection
+    calendarApi.unselect() 
     let title = "Unavailable";
 
     calendarApi.addEvent({

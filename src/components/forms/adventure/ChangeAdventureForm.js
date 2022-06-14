@@ -14,8 +14,6 @@ import { useEffect } from "react";
 import { updateAdventure } from "../../../services/AdventureService";
 import adventure from '../../../adventure.png';
 
-//NAPRAVITI PRAZNE FORME ZA IZMENU SLIKA I ADITIONAL SERVICA ILI PROBATI POVEZATI SA POSTOJECIM
-
 function ChangeAdventureForm({currentAdventureData, closeForm, childToParent}){
 
     const { register, handleSubmit, formState: { errors }, watch } = useForm({});

@@ -73,7 +73,6 @@ function login(data){
       .post("auth/login", data)
       .then((res) => {
         const token = res.data.accessToken;
-        // dekodiranje tokena, da dobijes podatke
         localStorage.setItem("user", token);
         window.location = "/user-home-page/admin"
       })

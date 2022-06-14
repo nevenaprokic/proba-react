@@ -10,7 +10,7 @@ import { useState } from "react";
 import UploadPictureForm from "../imageUpload/UploadPictureForm";
 import { useForm } from "react-hook-form";
 import { addCottage } from "../../../services/CottageService";
-import cottage from '../../../cottage.png';
+import cottage from "../../../cottage.png";
 
 function AddCottagePage() {
   const {
@@ -27,22 +27,21 @@ function AddCottagePage() {
 
   const onSubmit = (data) => {
     let formData = new FormData();
-    pictureInputList.forEach(element => {
+    pictureInputList.forEach((element) => {
       formData.append("photos", element, element.name);
     });
-        
-    console.log(formData.get("photos"));
-    formData.append('description', data.description);
-    formData.append('price', data.price);
-    formData.append('street', data.street);
-    formData.append('city', data.city);
-    formData.append('state', data.state);
-    formData.append('rulesOfConduct', data.rulesOfConduct);
-    formData.append('peopleNum', data.peopleNum);
-    formData.append('cancelationConditions', data.cancelationConditions);
-    formData.append('offerName', data.offerName);
-    formData.append('roomNumber', data.roomNumber);
-    formData.append('bedNumber', data.bedNumber);
+
+    formData.append("description", data.description);
+    formData.append("price", data.price);
+    formData.append("street", data.street);
+    formData.append("city", data.city);
+    formData.append("state", data.state);
+    formData.append("rulesOfConduct", data.rulesOfConduct);
+    formData.append("peopleNum", data.peopleNum);
+    formData.append("cancelationConditions", data.cancelationConditions);
+    formData.append("offerName", data.offerName);
+    formData.append("roomNumber", data.roomNumber);
+    formData.append("bedNumber", data.bedNumber);
 
     addCottage(formData, additionalServicesInputList);
     setSubmitForm(true);
@@ -51,7 +50,7 @@ function AddCottagePage() {
   return (
     <div className="formContainerAdd">
       <Typography variant="h6" gutterBottom>
-        <img style={{ verticalAlign: '-10' }} src={cottage} />
+        <img style={{ verticalAlign: "-10" }} src={cottage} />
         {"\t\tAdding new cottage"}
       </Typography>
       <Typography gutterBottom>

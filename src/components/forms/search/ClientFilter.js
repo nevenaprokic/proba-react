@@ -24,8 +24,10 @@ import ArrowUpwardTwoToneIcon from "@mui/icons-material/ArrowUpwardTwoTone";
 import ArrowDownwardTwoToneIcon from "@mui/icons-material/ArrowDownwardTwoTone";
 import Rating from "@mui/material/Rating";
 import { useEffect } from "react";
-import { filterInstructorsClient, sortInstructors } from "../../../services/InstructorService";
-
+import {
+  filterInstructorsClient,
+  sortInstructors,
+} from "../../../services/InstructorService";
 
 function getValue(value) {
   return `${value}`;
@@ -43,16 +45,6 @@ const stars = [
 const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
 const checkedIcon = <CheckBoxIcon fontSize="small" />;
 
-// function getMinNumPeople(offers) {
-//   console.log(offers);
-//   const totals = offers.map((x) => x.numberOfPerson);
-//   return Math.min(...totals);
-// }
-// function getMaxNumPeople(offers) {
-//   const totals = offers.map((x) => x.numberOfPerson);
-//   return Math.max(...totals);
-// }
-
 export default function ClientFilter({
   params,
   setParams,
@@ -61,11 +53,7 @@ export default function ClientFilter({
   lastSearchedOffers,
   offers,
 }) {
-  
-  const [valueNumPeople, setValueNumPeople] = React.useState([
-    0,
-    50,
-  ]);
+  const [valueNumPeople, setValueNumPeople] = React.useState([0, 50]);
   const [valuePrice, setValuePrice] = React.useState([20, 300]);
   const [valueRating, setValueRating] = React.useState([0, 5]);
 
@@ -125,7 +113,7 @@ export default function ClientFilter({
       maxPeople: 50,
       minPeople: 0,
       minPrice: 0,
-      minRating: 0
+      minRating: 0,
     });
   };
 
@@ -141,17 +129,14 @@ export default function ClientFilter({
     filterOffer[type](params, setOffers, lastSearchedOffers);
   };
 
-  useEffect(() => {
-  }, [offers]);
+  useEffect(() => {}, [offers]);
 
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <Grid container spacing={5}>
         <Grid item>
           <FormControl style={{ minWidth: 120 }}>
-            <InputLabel id="demo-simple-select-label">
-              Sorting
-            </InputLabel>
+            <InputLabel id="demo-simple-select-label">Sorting</InputLabel>
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
@@ -159,15 +144,23 @@ export default function ClientFilter({
               label="Criteria"
               onChange={criteriaChanged}
             >
-              {type == offerType.ADVENTURE && <MenuItem value={8}>First Name</MenuItem>}
               {type == offerType.ADVENTURE && (
-              <MenuItem value={9}>Last Name</MenuItem>
+                <MenuItem value={8}>First Name</MenuItem>
               )}
-              {type != offerType.ADVENTURE &&  <MenuItem value={1}>Name</MenuItem> }
+              {type == offerType.ADVENTURE && (
+                <MenuItem value={9}>Last Name</MenuItem>
+              )}
+              {type != offerType.ADVENTURE && (
+                <MenuItem value={1}>Name</MenuItem>
+              )}
               <MenuItem value={2}>Street</MenuItem>
               <MenuItem value={3}>City</MenuItem>
-              {type != offerType.ADVENTURE && <MenuItem value={4}>Rating</MenuItem> }
-              {type != offerType.ADVENTURE &&  <MenuItem value={5}>Price</MenuItem> }
+              {type != offerType.ADVENTURE && (
+                <MenuItem value={4}>Rating</MenuItem>
+              )}
+              {type != offerType.ADVENTURE && (
+                <MenuItem value={5}>Price</MenuItem>
+              )}
               {type == offerType.SHIP && <MenuItem value={6}>Size</MenuItem>}
               {type == offerType.SHIP && (
                 <MenuItem value={7}>Max speed</MenuItem>
@@ -188,10 +181,10 @@ export default function ClientFilter({
           </Button>
         </Grid>
         <Grid item xs>
-        <Typography
+          <Typography
             id="input-slider"
             gutterBottom
-            style={{ textAlign: "center"}}
+            style={{ textAlign: "center" }}
           >
             Rating
           </Typography>
@@ -210,74 +203,74 @@ export default function ClientFilter({
           <Typography
             id="input-slider"
             gutterBottom
-            style={{ textAlign: "center"}}
+            style={{ textAlign: "center" }}
           >
             {valueRating[0] + " - " + valueRating[1]}
           </Typography>
         </Grid>
         <Grid item xs>
-          { type != offerType.ADVENTURE && 
-              <>
-                  <Typography
-            id="input-slider"
-            gutterBottom
-            style={{ textAlign: "center"}}
-          >
-            Number of person
-          </Typography>
-          <Slider
-            getAriaLabel={() => "Minimum distance shift"}
-            value={valueNumPeople}
-            onChange={handleChangePeopleNumber}
-            valueLabelDisplay="auto"
-            getAriaValueText={getValue}
-            disableSwap
-            style={{ width: 170 }}
-            defaultValue={[2, 20]}
-            max={50}
-            min={0}
-          />
-          <Typography
-            id="input-slider"
-            gutterBottom
-            style={{ textAlign: "center"}}
-          >
-            {valueNumPeople[0] + " - " + valueNumPeople[1]}
-          </Typography>
-              </>
-          }
+          {type != offerType.ADVENTURE && (
+            <>
+              <Typography
+                id="input-slider"
+                gutterBottom
+                style={{ textAlign: "center" }}
+              >
+                Number of person
+              </Typography>
+              <Slider
+                getAriaLabel={() => "Minimum distance shift"}
+                value={valueNumPeople}
+                onChange={handleChangePeopleNumber}
+                valueLabelDisplay="auto"
+                getAriaValueText={getValue}
+                disableSwap
+                style={{ width: 170 }}
+                defaultValue={[2, 20]}
+                max={50}
+                min={0}
+              />
+              <Typography
+                id="input-slider"
+                gutterBottom
+                style={{ textAlign: "center" }}
+              >
+                {valueNumPeople[0] + " - " + valueNumPeople[1]}
+              </Typography>
+            </>
+          )}
         </Grid>
         <Grid item xs>
-          { type != offerType.ADVENTURE && 
+          {type != offerType.ADVENTURE && (
             <>
-                <Typography
-            id="input-slider"
-            gutterBottom
-            style={{ textAlign: "center" }}
-          >
-            Price €
-          </Typography>
-          <Slider
-            getAriaLabel={() => "Minimum distance shift"}
-            value={valuePrice}
-            onChange={handleChangePrice}
-            valueLabelDisplay="auto"
-            getAriaValueText={getValue}
-            disableSwap
-            style={{ width: 170 }}
-            defaultValue={[20, 50]}
-            max={300}
-            min={0}
-          />
-          <Typography
-            id="input-slider"
-            gutterBottom
-            style={{ textAlign: "center" }}
-          >
-            {valuePrice[0] + " - " + valuePrice[1]}
-          </Typography>
+              <Typography
+                id="input-slider"
+                gutterBottom
+                style={{ textAlign: "center" }}
+              >
+                Price €
+              </Typography>
+              <Slider
+                getAriaLabel={() => "Minimum distance shift"}
+                value={valuePrice}
+                onChange={handleChangePrice}
+                valueLabelDisplay="auto"
+                getAriaValueText={getValue}
+                disableSwap
+                style={{ width: 170 }}
+                defaultValue={[20, 50]}
+                max={300}
+                min={0}
+              />
+              <Typography
+                id="input-slider"
+                gutterBottom
+                style={{ textAlign: "center" }}
+              >
+                {valuePrice[0] + " - " + valuePrice[1]}
+              </Typography>
             </>
-          }
+          )}
         </Grid>
         <Grid item xs>
           <Button size="large" sx={{}} onClick={() => sendParams()}>

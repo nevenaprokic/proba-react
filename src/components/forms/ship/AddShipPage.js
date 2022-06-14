@@ -9,8 +9,8 @@ import AdditionalServices from "../addtitionaServices/AdditionalServices";
 import { useState } from "react";
 import UploadPictureForm from "../imageUpload/UploadPictureForm";
 import { useForm } from "react-hook-form";
-import {addShip} from "../../../services/ShipService";
-import ship from '../../../ship.png';
+import { addShip } from "../../../services/ShipService";
+import ship from "../../../ship.png";
 
 function AddShipPage() {
   const {
@@ -27,27 +27,26 @@ function AddShipPage() {
 
   const onSubmit = (data) => {
     let formData = new FormData();
-    pictureInputList.forEach(element => {
+    pictureInputList.forEach((element) => {
       formData.append("photos", element, element.name);
     });
-        
-    console.log(formData.get("photos"));
-    formData.append('description', data.description);
-    formData.append('price', data.price);
-    formData.append('street', data.street);
-    formData.append('city', data.city);
-    formData.append('state', data.state);
-    formData.append('rulesOfConduct', data.rulesOfConduct);
-    formData.append('additionalEquipment', data.additionalEquipment);
-    formData.append('peopleNum', data.peopleNum);
-    formData.append('cancelationConditions', data.cancelationConditions);
-    formData.append('offerName', data.offerName);
-    formData.append('type', data.type);
-    formData.append('size', data.size);
-    formData.append('motorNumber', data.motorNumber);
-    formData.append('motorPower', data.motorPower);
-    formData.append('maxSpeed', data.maxSpeed);
-    formData.append('navigationEquipment', data.navigationEquipment);
+
+    formData.append("description", data.description);
+    formData.append("price", data.price);
+    formData.append("street", data.street);
+    formData.append("city", data.city);
+    formData.append("state", data.state);
+    formData.append("rulesOfConduct", data.rulesOfConduct);
+    formData.append("additionalEquipment", data.additionalEquipment);
+    formData.append("peopleNum", data.peopleNum);
+    formData.append("cancelationConditions", data.cancelationConditions);
+    formData.append("offerName", data.offerName);
+    formData.append("type", data.type);
+    formData.append("size", data.size);
+    formData.append("motorNumber", data.motorNumber);
+    formData.append("motorPower", data.motorPower);
+    formData.append("maxSpeed", data.maxSpeed);
+    formData.append("navigationEquipment", data.navigationEquipment);
 
     addShip(formData, additionalServicesInputList);
     setSubmitForm(true);
@@ -56,7 +55,7 @@ function AddShipPage() {
   return (
     <div className="formContainerAdd">
       <Typography variant="h6" gutterBottom>
-      <img  src={ship} />
+        <img src={ship} />
         {"\t\tAdding new ship"}
       </Typography>
       <Typography gutterBottom>

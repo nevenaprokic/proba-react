@@ -28,7 +28,11 @@ import { getAdventureByInstructorEmail } from "../../../services/AdventureServic
 import { getShipByShipOwnerEmail } from "../../../services/ShipService";
 import { getCottageByCottageOwnerEmail } from "../../../services/CottageService";
 import Divider from "@mui/material/Divider";
-import {getMarkByShipOwnerEmail, getMarkByCottageOwnerEmail, getMarkByInstructorEmail} from '../../../services/MarkService';
+import {
+  getMarkByShipOwnerEmail,
+  getMarkByCottageOwnerEmail,
+  getMarkByInstructorEmail,
+} from "../../../services/MarkService";
 
 function Row({ row, role }) {
   const offer = row;
@@ -89,7 +93,7 @@ function Row({ row, role }) {
                   sx={{ color: "#5f6d5f" }}
                 >
                   Price:
-                  <label className="textItem"> {offer.price + '€'} </label>
+                  <label className="textItem"> {offer.price + "€"} </label>
                 </Typography>
                 <Typography
                   variant="body1"
@@ -125,7 +129,10 @@ function Row({ row, role }) {
                   sx={{ color: "#5f6d5f" }}
                 >
                   Address:
-                  <label className="textItem"> {offer.street + ", " + offer.city + ", "+offer.state} </label>
+                  <label className="textItem">
+                    {" "}
+                    {offer.street + ", " + offer.city + ", " + offer.state}{" "}
+                  </label>
                 </Typography>
               </Box>
             </Collapse>
@@ -140,7 +147,7 @@ function MarkForm() {
   const [offers, setOffers] = useState();
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
-  const [mark,setMark] = useState();
+  const [mark, setMark] = useState();
 
   let role = getRoleFromToken();
   let getOfferByOwnerEmail = {
@@ -176,8 +183,8 @@ function MarkForm() {
     setPage(0);
   };
 
-  return (
-    (!!offers && !!mark) && (
+  if (!!offers && !!mark) {
+    return (
       <div>
         <div>
           <p
@@ -188,13 +195,13 @@ function MarkForm() {
               color: "#CC7351",
             }}
           >
-            Overall rating of yours offers:        
+            Overall rating of yours offers:
             <Rating
               name="half-rating-read"
               precision={0.5}
               value={mark}
               readOnly
-              style={{marginLeft:"2%"}}
+              style={{ marginLeft: "2%" }}
               size="large"
             />
           </p>
@@ -248,8 +255,8 @@ function MarkForm() {
           )}
         </div>
       </div>
-    )
-  );
+    );
+  } else return null;
 }
 
 export default MarkForm;

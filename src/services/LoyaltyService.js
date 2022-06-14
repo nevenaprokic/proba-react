@@ -130,11 +130,6 @@ export function addOwnerCategory(categoryData, setLoyaltyCategories ){
 export function deleteClientCategory(id, setLoyaltyCategories){
     api
     .post("/loyalty/delete-client-category", id
-    //{
-    //     params: {
-    //         id : ids
-    //     }
-    // }
     )
     .then((responseMess) => {
                             updateLoyaltyClientCategories(setLoyaltyCategories);
@@ -153,11 +148,6 @@ export function deleteClientCategory(id, setLoyaltyCategories){
 export function deleteOwnerCategory(id, setLoyaltyCategories){
     api
     .post("/loyalty/delete-owner-category", id
-    //{
-    //     params: {
-    //         id : ids
-    //     }
-    // }
     )
     .then((responseMess) => {
                             updateLoyaltyOwnerCategories(setLoyaltyCategories);
@@ -202,15 +192,3 @@ export function getOwnerCategoryInfo(categoryName){
     });
 })
 }
-
-// export function deleteCategory(id){
-// api
-// .delete("/loyalty/delete-client-category",{
-//     params: {
-//         id: id
-//     }
-// })
-// .then((responseData) => console.log(responseData))
-// .catch((err) => console.log(err) )
-
-// }

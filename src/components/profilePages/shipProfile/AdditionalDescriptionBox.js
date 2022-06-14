@@ -60,12 +60,6 @@ function AdditionalDescriptionBox({ additionData }) {
           <ArticleIcon color="action" />
         </div>
         <label className="basicBoxItemTitle">Description: </label>
-        {/* <ReadMoreReact text={description}
-                        
-                        ideal={200}
-                        max={250}
-                        readMoreText={"Click here to read more.."}
-                    />    */}
         <div className="descriptionText">
           <ShowMoreText
             lines={7}

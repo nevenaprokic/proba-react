@@ -1,6 +1,4 @@
 import "../cottageProfile/CottageProfilePage.scss";
-import HomeIcon from "@mui/icons-material/Home";
-import { createTheme } from "@mui/material/styles";
 import { getAddressByShipId } from "../../../services/AddressService";
 import * as React from "react";
 import { useState, useEffect } from "react";
@@ -11,17 +9,6 @@ import SpeedIcon from "@mui/icons-material/Speed";
 import BoltIcon from "@mui/icons-material/Bolt";
 import PhishingIcon from "@mui/icons-material/Phishing";
 import PersonIcon from "@mui/icons-material/Person";
-
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: "#99A799",
-    },
-    secondary: {
-      main: "#ADC2A9",
-    },
-  },
-});
 
 function BasicShipInfoBox({ basicInfo }) {
   const [addressData, setAddressData] = useState();
@@ -35,7 +22,7 @@ function BasicShipInfoBox({ basicInfo }) {
     }
     setData();
   }, []);
-  if (addressData) {
+  if (!!addressData) {
     return (
       <div className="basicInfoContainer">
         <div>
@@ -104,7 +91,7 @@ function BasicShipInfoBox({ basicInfo }) {
         </div>
       </div>
     );
-  }
+  } else return null;
 }
 
 export default BasicShipInfoBox;

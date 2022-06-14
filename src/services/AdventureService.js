@@ -101,7 +101,7 @@ export function searchAdventureByInstructor(params, setOffers){
     return api
         .get("/adventure/search-adventures",  {params} + "/"
                                             + getUsernameFromToken())
-        .then((data) => {console.log(data.data); setOffers(data.data)}) //setOffers(data.data)
+        .then((data) => {console.log(data.data); setOffers(data.data)}) 
         .catch((err) => {toast.error(err.response.data, {
                             position: toast.POSITION.BOTTOM_RIGHT,
                             autoClose: 1500,

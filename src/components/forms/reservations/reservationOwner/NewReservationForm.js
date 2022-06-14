@@ -20,15 +20,18 @@ import {
 } from "../../../../app/jwtTokenUtils";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
-import {getAdventureByInstructorEmail} from '../../../../services/AdventureService';
-import {getShipByShipOwnerEmail} from '../../../../services/ShipService';
-import {getClientByCottageOwnerEmail, getClientByShipOwnerEmail, getClientByInstructorEmail, isAvailableClient} from '../../../../services/ClientService';
-import {makeReservationOwner} from '../../../../services/ReservationService';
+import { getAdventureByInstructorEmail } from "../../../../services/AdventureService";
+import { getShipByShipOwnerEmail } from "../../../../services/ShipService";
 import {
-  isAvailablePeriod
-} from "../../../../services/QuickActionService";
+  getClientByCottageOwnerEmail,
+  getClientByShipOwnerEmail,
+  getClientByInstructorEmail,
+  isAvailableClient,
+} from "../../../../services/ClientService";
+import { makeReservationOwner } from "../../../../services/ReservationService";
+import { isAvailablePeriod } from "../../../../services/QuickActionService";
 import { isAvailableOffer } from "../../../../services/ReservationService";
-import { addDaysToLocalDate} from '../../../../services/UtilService';
+import { addDaysToLocalDate } from "../../../../services/UtilService";
 
 const steps = [
   "Selection of clients",
@@ -45,7 +48,7 @@ const theme = createTheme({
 
 const regex = new RegExp("^[1-9]+[0-9]*$");
 function checkFirstPage(reservation) {
-  if (reservation.clientUserName === '') {
+  if (reservation.clientUserName === "") {
     toast.error("Client email is required", {
       position: toast.POSITION.BOTTOM_RIGHT,
       autoClose: 1500,
@@ -54,21 +57,24 @@ function checkFirstPage(reservation) {
   }
   return true;
 }
-function checkSecondPage(reservation, num){
+function checkSecondPage(reservation, num) {
   let startDateReservation = new Date(reservation.startDateReservation);
   const currentDate = new Date();
-  if ( startDateReservation <= currentDate) {
+  if (startDateReservation <= currentDate) {
     toast.error("Invalide date", {
       position: toast.POSITION.BOTTOM_RIGHT,
       autoClose: 1500,
     });
     return false;
   }
-  if(reservation.peopleNum > num){
-    toast.error(("The number of guests must be less than expected (" + num + ")."), {
-      position: toast.POSITION.BOTTOM_RIGHT,
-      autoClose: 1500,
-    });
+  if (reservation.peopleNum > num) {
+    toast.error(
+      "The number of guests must be less than expected (" + num + ").",
+      {
+        position: toast.POSITION.BOTTOM_RIGHT,
+        autoClose: 1500,
+      }
+    );
     return false;
   }
   if (!regex.test(reservation.daysReservation)) {
@@ -91,25 +97,22 @@ function checkSecondPage(reservation, num){
   return true;
 }
 
-
-
 export default function NewReservationForm({ offers, setOffers }) {
   const [activeStep, setActiveStep] = React.useState(0);
   const [reservation, setReservation] = React.useState({
     clientUserName: "",
-    clientName:"",
-    clientLastName:"",
+    clientName: "",
+    clientLastName: "",
     offerName: "",
     offerId: 0,
     daysReservation: 0,
     startDateReservation: "",
     peopleNum: 0,
     price: 0,
-    discount:0,
-
+    discount: 0,
   });
   const [client, setClient] = React.useState();
-  const [checked, setChecked] = React.useState([]);  
+  const [checked, setChecked] = React.useState([]);
 
   const handleNext = () => {
     if (activeStep == 0) {
@@ -117,16 +120,17 @@ export default function NewReservationForm({ offers, setOffers }) {
         setActiveStep(activeStep + 1);
       }
     } else if (activeStep == 1) {
-      let currentOffer = offers.find((offer) => offer.id === reservation.offerId);
+      let currentOffer = offers.find(
+        (offer) => offer.id === reservation.offerId
+      );
       if (checkSecondPage(reservation, currentOffer.numberOfPerson)) {
         checkDateFromBack();
       }
-
     } else if (activeStep == 2) {
       setActiveStep(activeStep + 1);
-      let params = {...reservation, "services":checked};
+      let params = { ...reservation, services: checked };
       makeReservationOwner(params);
-    } 
+    }
   };
 
   const handleBack = () => {
@@ -136,7 +140,14 @@ export default function NewReservationForm({ offers, setOffers }) {
     async function setCheck() {
       let checkAvailble = await isAvailableOffer(reservation);
       let checkPeriod = await isAvailablePeriod(reservation);
-      let checkClient = await isAvailableClient(reservation.clientUserName, new Date(reservation.startDateReservation).toISOString().split('T')[0], addDaysToLocalDate(reservation.startDateReservation, reservation.daysReservation));
+      let checkClient = await isAvailableClient(
+        reservation.clientUserName,
+        new Date(reservation.startDateReservation).toISOString().split("T")[0],
+        addDaysToLocalDate(
+          reservation.startDateReservation,
+          reservation.daysReservation
+        )
+      );
 
       if (checkAvailble && checkPeriod && checkClient) {
         setActiveStep(activeStep + 1);
@@ -171,13 +182,13 @@ export default function NewReservationForm({ offers, setOffers }) {
 
   let getOffer = {
     [userType.COTTAGE_OWNER]: getCottageByCottageOwnerEmail,
-    [userType.SHIP_OWNER] : getShipByShipOwnerEmail,
-    [userType.INSTRUCTOR] : getAdventureByInstructorEmail
+    [userType.SHIP_OWNER]: getShipByShipOwnerEmail,
+    [userType.INSTRUCTOR]: getAdventureByInstructorEmail,
   };
   let getClient = {
     [userType.COTTAGE_OWNER]: getClientByCottageOwnerEmail,
     [userType.SHIP_OWNER]: getClientByShipOwnerEmail,
-    [userType.INSTRUCTOR]: getClientByInstructorEmail
+    [userType.INSTRUCTOR]: getClientByInstructorEmail,
   };
   let role = getRoleFromToken();
   useEffect(() => {
@@ -188,7 +199,7 @@ export default function NewReservationForm({ offers, setOffers }) {
       setOffers(offersData ? offersData.data : {});
       return offersData;
     }
-    async function setDataClient(){
+    async function setDataClient() {
       let role = getRoleFromToken();
       let username = getUsernameFromToken();
       const clientsData = await getClient[role](username);
@@ -202,21 +213,32 @@ export default function NewReservationForm({ offers, setOffers }) {
   function getStepContent(step) {
     switch (step) {
       case 0:
-        return <FirstPage clients={client} setReservation={setReservation} offers={offers} role={role}/>;
+        return (
+          <FirstPage
+            clients={client}
+            setReservation={setReservation}
+            offers={offers}
+            role={role}
+          />
+        );
       case 1:
         return (
-          <SecondPage setReservation={setReservation} reservation={reservation} offers={offers} checked={checked} setChecked={setChecked}/>
+          <SecondPage
+            setReservation={setReservation}
+            reservation={reservation}
+            offers={offers}
+            checked={checked}
+            setChecked={setChecked}
+          />
         );
       case 2:
-        return (
-          <Review reservation={reservation} checked={checked} />
-        );
+        return <Review reservation={reservation} checked={checked} />;
       default:
         throw new Error("Unknown step");
     }
   }
-  return (
-    (!!client && !!offers) && (
+  if (!!client && !!offers) {
+    return (
       <div style={{ width: "70vw" }}>
         <ThemeProvider theme={theme}>
           <Container
@@ -247,7 +269,11 @@ export default function NewReservationForm({ offers, setOffers }) {
                     <Typography variant="subtitle1">
                       {"The new reservation will be presented with the '" +
                         reservation.offerName +
-                        "' offer. The client " + reservation.clientName + " "+ reservation.clientLastName +" will be notified of the new reservation."}
+                        "' offer. The client " +
+                        reservation.clientName +
+                        " " +
+                        reservation.clientLastName +
+                        " will be notified of the new reservation."}
                     </Typography>
                   </React.Fragment>
                 ) : (
@@ -275,6 +301,6 @@ export default function NewReservationForm({ offers, setOffers }) {
           </Container>
         </ThemeProvider>
       </div>
-    )
-  );
+    );
+  } else return null;
 }

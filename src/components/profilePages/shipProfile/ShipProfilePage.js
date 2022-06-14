@@ -8,7 +8,6 @@ import QuickActionBox from "../cottageProfile/QuickActionBox";
 import BasicShipInfoBox from "./BasicShipInfoBox";
 import AdditionalDescriptionBox from "./AdditionalDescriptionBox";
 import PriceList from "../cottageProfile/Pricelist";
-import ImagesBox from "../cottageProfile/ImagesBox";
 import "../../../style/OfferData.scss";
 import { getShipById, checkReservation } from "../../../services/ShipService";
 import { getRoleFromToken } from "../../../app/jwtTokenUtils";
@@ -20,7 +19,11 @@ import DeleteShip from "../../forms/ship/DeleteShip";
 import { toast } from "react-toastify";
 import MapBox from "../cottageProfile/MapBox";
 import ChangeShipForm from "../../forms/ship/ChangeShipForm";
-import { isSubscribed, subscribe, unsubscribe } from "../../../services/ClientService";
+import {
+  isSubscribed,
+  subscribe,
+  unsubscribe,
+} from "../../../services/ClientService";
 import ImagesGallery from "../../layout/ImageGallery";
 
 const theme = createTheme({
@@ -99,7 +102,9 @@ function ShipProfilePage({ id, close, childToParentMediaCard }) {
   };
 
   useEffect(() => {
-    if(getRoleFromToken() == userType.CLIENT){ isSubscribed(id, setSubscribed); }
+    if (getRoleFromToken() == userType.CLIENT) {
+      isSubscribed(id, setSubscribed);
+    }
     async function setData() {
       let ship = await getShipById(id);
       setShipData(!!ship ? ship.data : {});
@@ -109,8 +114,7 @@ function ShipProfilePage({ id, close, childToParentMediaCard }) {
     setData();
   }, []);
 
-  useEffect(() => {
-  }, [subscribed]);
+  useEffect(() => {}, [subscribed]);
 
   function createServiceData() {
     let rows = [];
@@ -122,17 +126,17 @@ function ShipProfilePage({ id, close, childToParentMediaCard }) {
     return rows;
   }
 
-  function handleSubscribe(){
+  function handleSubscribe() {
     setSubscribed(!subscribed);
-    if(subscribed){
+    if (subscribed) {
       unsubscribe(shipData.id);
-    }else{
+    } else {
       subscribe(shipData.id);
     }
   }
 
   let photos = [];
-  if (shipData) {
+  if (!!shipData) {
     shipData.photos.forEach((photo) => {
       let imag = { image: "data:image/jpg;base64," + photo };
       photos.push(imag);
@@ -176,15 +180,18 @@ function ShipProfilePage({ id, close, childToParentMediaCard }) {
                     Delete
                   </Button>
                 </div>
-              ) : getRoleFromToken() != null && getRoleFromToken() == userType.CLIENT ? (
+              ) : getRoleFromToken() != null &&
+                getRoleFromToken() == userType.CLIENT ? (
                 <Button
-                    style={{ marginLeft: "5%" }}
-                    variant="contained"
-                    onClick={handleSubscribe}
-                  >
-                   { (subscribed) ? "Unsubscribe" : "Subscribe"}
-                  </Button>
-              ) : <></>}
+                  style={{ marginLeft: "5%" }}
+                  variant="contained"
+                  onClick={handleSubscribe}
+                >
+                  {subscribed ? "Unsubscribe" : "Subscribe"}
+                </Button>
+              ) : (
+                <></>
+              )}
             </div>
             <Modal
               open={openChangeForm}
@@ -234,15 +241,18 @@ function ShipProfilePage({ id, close, childToParentMediaCard }) {
                 <BasicShipInfoBox basicInfo={shipData} />
               </Grid>
               <Grid item xs={12} sm={6}>
-                <AdditionalDescriptionBox additionData={shipData}  />
+                <AdditionalDescriptionBox additionData={shipData} />
               </Grid>
             </Grid>
-            <PriceList offer={shipData} additionalServices={createServiceData()} />
+            <PriceList
+              offer={shipData}
+              additionalServices={createServiceData()}
+            />
           </div>
         </ThemeProvider>
       </div>
     );
-  }
+  } else return null;
 }
 
 export default ShipProfilePage;

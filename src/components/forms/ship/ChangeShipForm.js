@@ -11,8 +11,8 @@ import ChangeImageForm from "../imageUpload/ChangeImageForm";
 import { useForm } from "react-hook-form";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useEffect } from "react";
-import {updateShip} from "../../../services/ShipService";
-import ship from '../../../ship.png';
+import { updateShip } from "../../../services/ShipService";
+import ship from "../../../ship.png";
 
 function ChangeShipForm({ currentShipData, closeForm, childToParent }) {
   const {
@@ -53,7 +53,7 @@ function ChangeShipForm({ currentShipData, closeForm, childToParent }) {
     data["photos"] = images;
     data["additionalServices"] = additionalServicesInputList;
     updateShip(data, additionalServicesInputList);
-   
+
     childToParent(data);
     setSubmitForm(true);
     closeForm();
@@ -77,7 +77,7 @@ function ChangeShipForm({ currentShipData, closeForm, childToParent }) {
         </div>
         <div>
           <Typography variant="h6" gutterBottom>
-          <img src={ship} />
+            <img src={ship} />
             {"\t\tChange ship"}
           </Typography>
         </div>
@@ -97,7 +97,7 @@ function ChangeShipForm({ currentShipData, closeForm, childToParent }) {
               fullWidth
               disabled
               defaultValue={currentShipData.name}
-              {...register("name")} 
+              {...register("name")}
             />
           </Grid>
 
@@ -111,10 +111,16 @@ function ChangeShipForm({ currentShipData, closeForm, childToParent }) {
               }}
               fullWidth
               defaultValue={currentShipData.numberOfPerson}
-              {...register("numberOfPerson", {required:true, pattern:/^[1-9]+[0-9]*$/})} 
+              {...register("numberOfPerson", {
+                required: true,
+                pattern: /^[1-9]+[0-9]*$/,
+              })}
             />
-             {errors.numberOfPerson && <label className="requiredLabel">Only positive numbers are allowed</label>}
-                
+            {errors.numberOfPerson && (
+              <label className="requiredLabel">
+                Only positive numbers are allowed
+              </label>
+            )}
           </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
@@ -128,10 +134,16 @@ function ChangeShipForm({ currentShipData, closeForm, childToParent }) {
                 ),
               }}
               defaultValue={currentShipData.price}
-              {...register("price", {required:true, pattern:/^(\d+(\.\d{0,2})?|\.?\d{1,2})$/})}
+              {...register("price", {
+                required: true,
+                pattern: /^(\d+(\.\d{0,2})?|\.?\d{1,2})$/,
+              })}
             />
-            {errors.price && <label className="requiredLabel">Only numbers with a maximum of two decimal places are allowed</label>}
-                
+            {errors.price && (
+              <label className="requiredLabel">
+                Only numbers with a maximum of two decimal places are allowed
+              </label>
+            )}
           </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
@@ -161,10 +173,10 @@ function ChangeShipForm({ currentShipData, closeForm, childToParent }) {
               })}
             />
             {errors.size && (
-            <label className="requiredLabel">
-              Required! Only positive numbers are allowed
-            </label>
-          )}
+              <label className="requiredLabel">
+                Required! Only positive numbers are allowed
+              </label>
+            )}
           </Grid>
 
           <Grid item xs={12} sm={4}>
@@ -181,10 +193,10 @@ function ChangeShipForm({ currentShipData, closeForm, childToParent }) {
               })}
             />
             {errors.motorNumber && (
-            <label className="requiredLabel">
-              Required! Only positive numbers are allowed
-            </label>
-          )}
+              <label className="requiredLabel">
+                Required! Only positive numbers are allowed
+              </label>
+            )}
           </Grid>
           <Grid item xs={12} sm={4}>
             <TextField
@@ -200,10 +212,10 @@ function ChangeShipForm({ currentShipData, closeForm, childToParent }) {
               })}
             />
             {errors.motorPower && (
-            <label className="requiredLabel">
-              Required! Only positive numbers are allowed
-            </label>
-          )}
+              <label className="requiredLabel">
+                Required! Only positive numbers are allowed
+              </label>
+            )}
           </Grid>
           <Grid item xs={12} sm={4}>
             <TextField
@@ -219,10 +231,10 @@ function ChangeShipForm({ currentShipData, closeForm, childToParent }) {
               })}
             />
             {errors.maxSpeed && (
-            <label className="requiredLabel">
-              Required! Only positive numbers are allowed
-            </label>
-          )}
+              <label className="requiredLabel">
+                Required! Only positive numbers are allowed
+              </label>
+            )}
           </Grid>
 
           <Grid item xs={12} sm={4}>
@@ -238,10 +250,10 @@ function ChangeShipForm({ currentShipData, closeForm, childToParent }) {
               })}
             />
             {errors.street && (
-            <label className="requiredLabel">
-              Required! Only letters, numbers and spaces are allowed
-            </label>
-          )}
+              <label className="requiredLabel">
+                Required! Only letters, numbers and spaces are allowed
+              </label>
+            )}
           </Grid>
           <Grid item xs={12} sm={4}>
             <TextField
@@ -250,13 +262,16 @@ function ChangeShipForm({ currentShipData, closeForm, childToParent }) {
               label="City"
               fullWidth
               defaultValue={currentShipData.city}
-              {...register("city", { required: true, pattern: /^[a-zA-Z\s]*$/ })}
+              {...register("city", {
+                required: true,
+                pattern: /^[a-zA-Z\s]*$/,
+              })}
             />
-             {errors.city && (
-            <label className="requiredLabel">
-              Required! Only letters and spaces are allowed
-            </label>
-          )}
+            {errors.city && (
+              <label className="requiredLabel">
+                Required! Only letters and spaces are allowed
+              </label>
+            )}
           </Grid>
           <Grid item xs={12} sm={4}>
             <TextField
@@ -265,13 +280,16 @@ function ChangeShipForm({ currentShipData, closeForm, childToParent }) {
               label="State"
               fullWidth
               defaultValue={currentShipData.state}
-              {...register("state", { required: true, pattern: /^[a-zA-Z\s]*$/ })}
+              {...register("state", {
+                required: true,
+                pattern: /^[a-zA-Z\s]*$/,
+              })}
             />
-             {errors.state && (
-            <label className="requiredLabel">
-              Required! Only letters and spaces are allowed
-            </label>
-          )}
+            {errors.state && (
+              <label className="requiredLabel">
+                Required! Only letters and spaces are allowed
+              </label>
+            )}
           </Grid>
           <Grid item xs={12}>
             <TextField
@@ -284,8 +302,8 @@ function ChangeShipForm({ currentShipData, closeForm, childToParent }) {
               {...register("description", { required: true })}
             />
             {errors.description && (
-            <label className="requiredLabel">Required! </label>
-          )}
+              <label className="requiredLabel">Required! </label>
+            )}
           </Grid>
           <Grid item xs={12}>
             <TextField
@@ -346,8 +364,8 @@ function ChangeShipForm({ currentShipData, closeForm, childToParent }) {
               {...register("cancellationConditions", { required: true })}
             />
             {errors.cancellationConditions && (
-            <label className="requiredLabel">Required! </label>
-          )}
+              <label className="requiredLabel">Required! </label>
+            )}
           </Grid>
           <Grid item xs={12} sm={4} sx={{ marginLeft: "35%" }}>
             <Button

@@ -1,7 +1,7 @@
 import * as React from "react";
 import Grid from "@mui/material/Grid";
 import { TextField } from "@mui/material";
-import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
+import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 import Button from "@mui/material/Button";
 import { useState, useEffect } from "react";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
@@ -21,7 +21,6 @@ export default function ClientSearch({
   const [valueDate, setValueDate] = React.useState();
 
   const handleChangeDate = (newValue) => {
-    // newValue = newValue.toLocaleDateString("en-US");
     setValueDate(newValue);
     setParams({ ...params, date: newValue });
   };

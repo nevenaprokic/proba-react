@@ -12,7 +12,6 @@ import QuickActionBox from "./QuickActionBox";
 import BasicCottageInfoBox from "../cottageProfile/BasicCottageInfoBox";
 import AdditionalDescriptionBox from "./AdditionalDescriptionBox";
 import PriceList from "./Pricelist";
-import ImagesBox from "./ImagesBox";
 import Rating from "@mui/material/Rating";
 import Divider from "@mui/material/Divider";
 import { getRoleFromToken } from "../../../app/jwtTokenUtils";
@@ -22,7 +21,11 @@ import Modal from "@mui/material/Modal";
 import { toast } from "react-toastify";
 import MapBox from "./MapBox";
 import ChangeCottageForm from "../../forms/cottage/ChangeCottageForm";
-import { subscribe, unsubscribe, isSubscribed } from "../../../services/ClientService";
+import {
+  subscribe,
+  unsubscribe,
+  isSubscribed,
+} from "../../../services/ClientService";
 import ImagesGallery from "../../layout/ImageGallery";
 
 const theme = createTheme({
@@ -96,7 +99,9 @@ function CottageProfilePage({ id, close, childToParentMediaCard }) {
   };
 
   useEffect(() => {
-    if(getRoleFromToken() == userType.CLIENT){ isSubscribed(id, setSubscribed); }
+    if (getRoleFromToken() == userType.CLIENT) {
+      isSubscribed(id, setSubscribed);
+    }
     async function setcottageData() {
       let cottage = await getCottageById(id);
       setCottageData(!!cottage ? cottage.data : {});
@@ -105,8 +110,7 @@ function CottageProfilePage({ id, close, childToParentMediaCard }) {
     setcottageData();
   }, []);
 
-  useEffect(() => {
-  }, [subscribed]);
+  useEffect(() => {}, [subscribed]);
 
   function createServiceData() {
     let rows = [];
@@ -118,18 +122,18 @@ function CottageProfilePage({ id, close, childToParentMediaCard }) {
     return rows;
   }
 
-  function handleSubscribe(){
+  function handleSubscribe() {
     setSubscribed(!subscribed);
-    if(subscribed){
+    if (subscribed) {
       unsubscribe(cottageData.id);
-    }else{
+    } else {
       subscribe(cottageData.id);
     }
   }
 
   let images = [];
 
-  if (cottageData) {
+  if (!!cottageData) {
     cottageData.photos.forEach((photo) => {
       let imag = { image: "data:image/jpg;base64," + photo };
       images.push(imag);
@@ -173,15 +177,18 @@ function CottageProfilePage({ id, close, childToParentMediaCard }) {
                     Delete
                   </Button>
                 </div>
-              ) : getRoleFromToken() != null && getRoleFromToken() == userType.CLIENT ? (
+              ) : getRoleFromToken() != null &&
+                getRoleFromToken() == userType.CLIENT ? (
                 <Button
-                    style={{ marginLeft: "5%" }}
-                    variant="contained"
-                    onClick={handleSubscribe}
-                  >
-                   { (subscribed) ? "Unsubscribe" : "Subscribe"}
-                  </Button>
-              ) : <></>}
+                  style={{ marginLeft: "5%" }}
+                  variant="contained"
+                  onClick={handleSubscribe}
+                >
+                  {subscribed ? "Unsubscribe" : "Subscribe"}
+                </Button>
+              ) : (
+                <></>
+              )}
             </div>
             <Modal
               open={openChangeForm}
@@ -241,7 +248,7 @@ function CottageProfilePage({ id, close, childToParentMediaCard }) {
         </ThemeProvider>
       </div>
     );
-  }
+  } else return null;
 }
 
 export default CottageProfilePage;

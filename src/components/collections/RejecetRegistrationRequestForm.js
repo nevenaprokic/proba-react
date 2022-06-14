@@ -14,10 +14,7 @@ import "../../style/DeleteOrder.scss";
 import "react-toastify/dist/ReactToastify.css";
 import {discarRegistrationRequest} from "../../services/RegistrationRequestService";
 
-function RejectRegistrationRequest({requestId, close, setRequests}){
-    //slanje teksta i id-a zahteva na bek i slanje mejla korisniku;
-
-    
+function RejectRegistrationRequest({requestId, close, setRequests}){    
 
     const theme = createTheme({
         palette: {

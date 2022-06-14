@@ -21,7 +21,13 @@ import TablePagination from "@mui/material/TablePagination";
 import { getAllReservation } from "../../../services/ReservationService";
 import PersonIcon from "@mui/icons-material/Person";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
-import { getAllReservationShipOwner ,getAllReportCottageOwner, getAllReportShipOwner, getAllReservationInstructor, getAllReportInstructor} from "../../../services/ReservationService";
+import {
+  getAllReservationShipOwner,
+  getAllReportCottageOwner,
+  getAllReportShipOwner,
+  getAllReservationInstructor,
+  getAllReportInstructor,
+} from "../../../services/ReservationService";
 import { userType, offerType } from "../../../app/Enum";
 import { getRoleFromToken } from "../../../app/jwtTokenUtils";
 import {
@@ -29,19 +35,17 @@ import {
   getAllShipReservationsClient,
   getAllAdventureReservationsClient,
 } from "../../../services/ClientService";
-import ReservationReportForm from '../../forms/reservations/ReservationReportForm';
+import ReservationReportForm from "../../forms/reservations/ReservationReportForm";
 import ClientSort from "../../forms/search/ClientSort";
-import ReviewForm from "../../forms/review/ReviewForm"
+import ReviewForm from "../../forms/review/ReviewForm";
 import ComplaintForm from "../../forms/review/ComplaintForm";
-import pageIcon from '../../images/writer.png';
+import pageIcon from "../../images/writer.png";
 import ConciseClientProfile from "../userProfile/ConciseClientProfile";
-
 
 function Row({ row, setRequests, disabled }) {
   const request = row;
   const [open, setOpen] = React.useState(false);
 
-console.log(disabled);
   const theme = createTheme({
     palette: {
       primary: { main: "#CC7351" },
@@ -54,14 +58,26 @@ console.log(disabled);
   const [openComplaint, setOpenComplaint] = React.useState(false);
   const [openClientProfile, setOpenClientProfile] = React.useState(false);
 
-  function handleOpenReview(){setOpenReview(true);}
-  function handleCloseReview(){setOpenReview(false);}
+  function handleOpenReview() {
+    setOpenReview(true);
+  }
+  function handleCloseReview() {
+    setOpenReview(false);
+  }
 
-  function handleOpenComplaint(){setOpenComplaint(true);}
-  function handleCloseComplaint(){setOpenComplaint(false);}
+  function handleOpenComplaint() {
+    setOpenComplaint(true);
+  }
+  function handleCloseComplaint() {
+    setOpenComplaint(false);
+  }
 
-  function handleOpenClientProfile(){setOpenClientProfile(true);}
-  function handleCloseClientProfile(){setOpenClientProfile(false);}
+  function handleOpenClientProfile() {
+    setOpenClientProfile(true);
+  }
+  function handleCloseClientProfile() {
+    setOpenClientProfile(false);
+  }
 
   const handleOpenForm = () => {
     setOpenForm(true);
@@ -70,7 +86,6 @@ console.log(disabled);
   const handleCloseForm = () => {
     setOpenForm(false);
   };
-
 
   return (
     <ThemeProvider theme={theme}>
@@ -85,144 +100,167 @@ console.log(disabled);
             >
               {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
             </IconButton>
-
-          </TableCell> 
-          <TableCell sx={{fontSize: 16}} align="center" >{request.clienName + " " + request.clientLastName}</TableCell>
-          <TableCell sx={{fontSize: 16}} align="center">{request.offerName}</TableCell>
-          <TableCell sx={{fontSize: 16}} align="center">{request.startDate}</TableCell>
-          <TableCell sx={{fontSize: 16}} align="center">{request.endDate}</TableCell>
+          </TableCell>
+          <TableCell sx={{ fontSize: 16 }} align="center">
+            {request.clienName + " " + request.clientLastName}
+          </TableCell>
+          <TableCell sx={{ fontSize: 16 }} align="center">
+            {request.offerName}
+          </TableCell>
+          <TableCell sx={{ fontSize: 16 }} align="center">
+            {request.startDate}
+          </TableCell>
+          <TableCell sx={{ fontSize: 16 }} align="center">
+            {request.endDate}
+          </TableCell>
           <TableCell>
-          {getRoleFromToken() == userType.CLIENT ?
-           <>
-            <TableCell ><Button 
-           type="submit"
-           variant="contained"
-           sx={{float:"right"}}
-           color="primary"
-           size="small"
-           onClick={() => handleOpenReview()}
-            >
-            Review 
-            </Button></TableCell>
-          <TableCell ><Button 
-            type="submit"
-            variant="contained"
-            sx={{float:"right"}}
-            color="primary"
-            size="small"
-            onClick={() => handleOpenComplaint()}
-            >
-            Complain 
-          </Button></TableCell>
-           </>
-           :
-            <TableCell ><Button 
-            disabled={!disabled}
-            type="submit"
-            variant="contained"
-            sx={{float:"right"}}
-            color="primary"
-            size="small"
-            onClick={() => handleOpenForm()}
-          >
-          Report 
-          </Button></TableCell>
-          }
-          
+            {getRoleFromToken() == userType.CLIENT ? (
+              <>
+                <TableCell>
+                  <Button
+                    type="submit"
+                    variant="contained"
+                    sx={{ float: "right" }}
+                    color="primary"
+                    size="small"
+                    onClick={() => handleOpenReview()}
+                  >
+                    Review
+                  </Button>
+                </TableCell>
+                <TableCell>
+                  <Button
+                    type="submit"
+                    variant="contained"
+                    sx={{ float: "right" }}
+                    color="primary"
+                    size="small"
+                    onClick={() => handleOpenComplaint()}
+                  >
+                    Complain
+                  </Button>
+                </TableCell>
+              </>
+            ) : (
+              <TableCell>
+                <Button
+                  disabled={!disabled}
+                  type="submit"
+                  variant="contained"
+                  sx={{ float: "right" }}
+                  color="primary"
+                  size="small"
+                  onClick={() => handleOpenForm()}
+                >
+                  Report
+                </Button>
+              </TableCell>
+            )}
+
             <Modal
-                  open={openReview}
-                  onClose={handleCloseReview}
-                  aria-labelledby="modal-modal-title"
-                  aria-describedby="modal-modal-description"
-                  sx={{backgroundColor:"rgb(218, 224, 210, 0.6)", overflow:"auto"}}
-              >
-                      <ReviewForm close={handleCloseReview} offer={row} />
-                  
-              </Modal>
+              open={openReview}
+              onClose={handleCloseReview}
+              aria-labelledby="modal-modal-title"
+              aria-describedby="modal-modal-description"
+              sx={{
+                backgroundColor: "rgb(218, 224, 210, 0.6)",
+                overflow: "auto",
+              }}
+            >
+              <ReviewForm close={handleCloseReview} offer={row} />
+            </Modal>
 
-              <Modal
-                  open={openComplaint}
-                  onClose={handleCloseComplaint}
-                  aria-labelledby="modal-modal-title"
-                  aria-describedby="modal-modal-description"
-                  sx={{backgroundColor:"rgb(218, 224, 210, 0.6)", overflow:"auto"}}
-              >
-                      <ComplaintForm close={handleCloseComplaint} offer={row} />
-                  
-              </Modal>
-        
-              <Modal
-                open={openForm}
-                onClose={handleCloseForm}
-                aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description"
-                sx={{
-                  backgroundColor: "rgb(218, 224, 210, 0.6)",
-                  overflow: "auto",
-                }}
-              > 
-                <ReservationReportForm closeForm={handleCloseForm} request={request}/>
-              </Modal>
+            <Modal
+              open={openComplaint}
+              onClose={handleCloseComplaint}
+              aria-labelledby="modal-modal-title"
+              aria-describedby="modal-modal-description"
+              sx={{
+                backgroundColor: "rgb(218, 224, 210, 0.6)",
+                overflow: "auto",
+              }}
+            >
+              <ComplaintForm close={handleCloseComplaint} offer={row} />
+            </Modal>
 
+            <Modal
+              open={openForm}
+              onClose={handleCloseForm}
+              aria-labelledby="modal-modal-title"
+              aria-describedby="modal-modal-description"
+              sx={{
+                backgroundColor: "rgb(218, 224, 210, 0.6)",
+                overflow: "auto",
+              }}
+            >
+              <ReservationReportForm
+                closeForm={handleCloseForm}
+                request={request}
+              />
+            </Modal>
           </TableCell>
         </TableRow>
 
-        { getRoleFromToken() != userType.CLIENT && 
+        {getRoleFromToken() != userType.CLIENT && (
           <TableRow>
-          <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
-            <Collapse in={open} timeout="auto" unmountOnExit>
-              <Box sx={{ margin: 1 }}>
-                <Typography
-                  variant="h6"
-                  gutterBottom
-                  component="div"
-                  sx={{ color: "#5f6d5f" }}
-                >
-                  <PersonIcon />
-                  {"\t\tClient info"}
-                </Typography>
-                <Typography
-                  variant="body1"
-                  gutterBottom
-                  component="div"
-                  sx={{ color: "#5f6d5f" }}
-                >
-                  Email address:
-                  <label className="textItem"> {request.clientEmail} </label>
-                </Typography>
-                <Typography
-                  variant="body1"
-                  gutterBottom
-                  component="div"
-                  sx={{ color: "#5f6d5f" }}
-                >
-                  Phone number:
-                  <label className="textItem"> {request.phoneNumber} </label>
-                </Typography>
-               <Button 
-                    variant="contained" 
+            <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
+              <Collapse in={open} timeout="auto" unmountOnExit>
+                <Box sx={{ margin: 1 }}>
+                  <Typography
+                    variant="h6"
+                    gutterBottom
+                    component="div"
+                    sx={{ color: "#5f6d5f" }}
+                  >
+                    <PersonIcon />
+                    {"\t\tClient info"}
+                  </Typography>
+                  <Typography
+                    variant="body1"
+                    gutterBottom
+                    component="div"
+                    sx={{ color: "#5f6d5f" }}
+                  >
+                    Email address:
+                    <label className="textItem"> {request.clientEmail} </label>
+                  </Typography>
+                  <Typography
+                    variant="body1"
+                    gutterBottom
+                    component="div"
+                    sx={{ color: "#5f6d5f" }}
+                  >
+                    Phone number:
+                    <label className="textItem"> {request.phoneNumber} </label>
+                  </Typography>
+                  <Button
+                    variant="contained"
                     color="secondary"
                     size="small"
-                    onClick={() => handleOpenClientProfile()}>
+                    onClick={() => handleOpenClientProfile()}
+                  >
                     View profile
-                </Button> 
-                <Modal
-                  open={openClientProfile}
-                  onClose={handleCloseClientProfile}
-                  aria-labelledby="modal-modal-title"
-                  aria-describedby="modal-modal-description"
-                  sx={{backgroundColor:"rgb(218, 224, 210, 0.6)", overflow:"auto"}}
-              >
-                      <ConciseClientProfile closeModal={handleCloseClientProfile} clientEmail={request.clientEmail} />
-                  
-              </Modal>
-
-
-              </Box>
-            </Collapse>
-          </TableCell>
-        </TableRow>
-        }
+                  </Button>
+                  <Modal
+                    open={openClientProfile}
+                    onClose={handleCloseClientProfile}
+                    aria-labelledby="modal-modal-title"
+                    aria-describedby="modal-modal-description"
+                    sx={{
+                      backgroundColor: "rgb(218, 224, 210, 0.6)",
+                      overflow: "auto",
+                    }}
+                  >
+                    <ConciseClientProfile
+                      closeModal={handleCloseClientProfile}
+                      clientEmail={request.clientEmail}
+                    />
+                  </Modal>
+                </Box>
+              </Collapse>
+            </TableCell>
+          </TableRow>
+        )}
         <TableRow>
           <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
             <Collapse in={open} timeout="auto" unmountOnExit>
@@ -295,26 +333,24 @@ function ReservationProfile({ offerT }) {
     [offerType.ADVENTURE]: getAllAdventureReservationsClient,
     [userType.INSTRUCTOR]: getAllReservationInstructor,
   };
-  let getReportReservation ={
+  let getReportReservation = {
     [userType.COTTAGE_OWNER]: getAllReportCottageOwner,
-    [userType.SHIP_OWNER] : getAllReportShipOwner,
-    [userType.INSTRUCTOR] : getAllReportInstructor
-  }
+    [userType.SHIP_OWNER]: getAllReportShipOwner,
+    [userType.INSTRUCTOR]: getAllReportInstructor,
+  };
 
   useEffect(() => {
     async function setData() {
       let role = getRoleFromToken();
       setReport([]);
       if (role == userType.CLIENT) role = offerT;
-      else
-      {
+      else {
         const reportData = await getReportReservation[role]();
         console.log(reportData);
         setReport(reportData.data ? reportData.data : {});
       }
       const responseData = await getReservation[role]();
       setRequests(responseData.data ? responseData.data : {});
-      
     }
     setData();
   }, []);
@@ -328,14 +364,16 @@ function ReservationProfile({ offerT }) {
     setPage(0);
   };
 
-  return (
-    (requests && report) && (
+  if (requests && report) {
+    return (
       <div className="requestsContainer">
         <TableContainer component={Paper} className="tableContainer">
           <Table aria-label="collapsible table">
             <TableHead>
               <TableRow sx={{ borderBottom: "solid #99A799" }}>
-                <TableCell><img src={pageIcon} width="60" height="60"></img></TableCell>
+                <TableCell>
+                  <img src={pageIcon} width="60" height="60"></img>
+                </TableCell>
                 <TableCell
                   sx={{ fontWeight: "bold", color: "#5f6d5f", fontSize: 18 }}
                   align="center"
@@ -360,11 +398,14 @@ function ReservationProfile({ offerT }) {
                 >
                   <Typography variant="button">End date</Typography>
                 </TableCell>
-                 <TableCell sx={{ color: "#5f6d5f" }} align="center">
-                        <Typography variant="button">
-                            <ClientSort reservations={requests} setReservations={setRequests} />
-                        </Typography>
-                    </TableCell>
+                <TableCell sx={{ color: "#5f6d5f" }} align="center">
+                  <Typography variant="button">
+                    <ClientSort
+                      reservations={requests}
+                      setReservations={setRequests}
+                    />
+                  </Typography>
+                </TableCell>
                 <TableCell />
                 <TableCell />
               </TableRow>
@@ -373,7 +414,12 @@ function ReservationProfile({ offerT }) {
               {requests
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row) => (
-                  <Row key={row.id} row={row} setRequests={setRequests} disabled={report.some(item => row.id === item)} />
+                  <Row
+                    key={row.id}
+                    row={row}
+                    setRequests={setRequests}
+                    disabled={report.some((item) => row.id === item)}
+                  />
                 ))}
             </TableBody>
           </Table>
@@ -393,8 +439,8 @@ function ReservationProfile({ offerT }) {
           </Typography>
         )}
       </div>
-    )
-  );
+    );
+  } else return null;
 }
 
 export default ReservationProfile;

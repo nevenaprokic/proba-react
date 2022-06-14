@@ -21,8 +21,8 @@ import { offerType } from "../../app/Enum";
 import Checkout from "../forms/reservations/newQuickReservation/NewQuickReservationForm";
 import NewReservationForm from "../forms/reservations/reservationOwner/NewReservationForm";
 import HomePageGraph from "../graphs/attendanceSchedule/HomePageGraph";
-import MarkForm from '../graphs/marks/MarkForm';
-import IncomeStatement from '../graphs/incomeStatement/IncomeStatement';
+import MarkForm from "../graphs/marks/MarkForm";
+import IncomeStatement from "../graphs/incomeStatement/IncomeStatement";
 import ReservationProfile from "../profilePages/reservationProfile/ReservationProfile";
 
 function TabPanel(props) {
@@ -159,10 +159,7 @@ function InstructorHomePage() {
                 />
               </Grid>
             </Box>
-            <Album albumData={offers} setAlbumeData={setOffers} />{" "}
-            {
-              //komponenta sa karticama;
-            }
+            <Album albumData={offers} setAlbumeData={setOffers} /> {}
           </TabPanel>
           <TabPanel value={value} index={2}>
             <OwnerProfile />
@@ -171,7 +168,7 @@ function InstructorHomePage() {
             <AddAdventurePage />
           </TabPanel>
           <TabPanel value={value} index={6}>
-            <ReservationProfile/>
+            <ReservationProfile />
           </TabPanel>
           <TabPanel value={value} index={7}>
             <NewReservationForm offers={offers} setOffers={setOffers} />
@@ -186,10 +183,10 @@ function InstructorHomePage() {
             <HomePageGraph />
           </TabPanel>
           <TabPanel value={value} index={13}>
-            <IncomeStatement/>
+            <IncomeStatement />
           </TabPanel>
           <TabPanel value={value} index={14}>
-            <MarkForm/>
+            <MarkForm />
           </TabPanel>
         </Box>
       </Container>
