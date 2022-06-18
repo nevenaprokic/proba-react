@@ -15,7 +15,7 @@ export function getAllRegistrationRegusestr(){
 
 export function acceptRegistrationRequest(requestId, setRequests){
     api
-    .post("/registration-request/accept", requestId)
+    .put("/registration-request/accept", requestId)
     .then((responseData) => { 
 
         toast.success("Successfully accepted request", {
@@ -33,7 +33,7 @@ export function acceptRegistrationRequest(requestId, setRequests){
 
 export function discarRegistrationRequest(requestId, message, setRequests){
     api 
-    .post("/registration-request/discard?requestId="+ requestId, message)
+    .put("/registration-request/discard?requestId="+ requestId, message)
     .then((responseData) => {
                     setRequests(responseData.data ? responseData.data : {});
                     toast.success(responseData.data, {

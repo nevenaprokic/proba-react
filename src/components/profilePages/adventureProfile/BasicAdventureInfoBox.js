@@ -1,15 +1,15 @@
 import "./AdventureProfilePage.scss";
 import ArticleIcon from "@mui/icons-material/Article";
 import ShowMoreText from "react-show-more-text";
+import PersonIcon from "@mui/icons-material/Person";
 
 function executeOnClick(isExpanded) {
   console.log(isExpanded);
 }
 
-function BasicAdventureInfiBox({ basicInfo }) {
+function BasicAdventureInfoBox({ basicInfo }) {
   return (
     <div className="basicInfoContainer">
-      <div></div>
       <div>
         <div className="basicBoxItem">
           <ArticleIcon color="action" />
@@ -32,7 +32,7 @@ function BasicAdventureInfiBox({ basicInfo }) {
           </ShowMoreText>
         </div>
       </div>
-
+      <br></br>
       <div>
         <div className="basicBoxItem">
           <ArticleIcon color="action" />
@@ -54,8 +54,16 @@ function BasicAdventureInfiBox({ basicInfo }) {
           </ShowMoreText>
         </div>
       </div>
+      <br></br>
+      <div>
+        <div className="basicBoxItem">
+          <PersonIcon color="action" />
+        </div>
+        <label className="basicBoxItemTitle">Maximum number of people: </label>
+        <label className="basicBoxItemText">{basicInfo.peopleNum}</label>
+      </div>
     </div>
   );
 }
 
-export default BasicAdventureInfiBox;
+export default BasicAdventureInfoBox;

@@ -15,7 +15,7 @@ import { IconButton } from "@mui/material";
 function AdditionalInfoBox({ additionalDate }) {
   const [open, setOpen] = useState(false);
   function handleOpen() {
-    setOpen(true);
+    if (getRoleFromToken() != null) setOpen(true);
   }
   function handleClose() {
     setOpen(false);

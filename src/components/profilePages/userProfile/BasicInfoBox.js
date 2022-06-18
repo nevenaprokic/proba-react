@@ -5,6 +5,7 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import PersonIcon from "@mui/icons-material/Person";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
+import EmailIcon from "@mui/icons-material/Email";
 
 function BasicInfoBox({ basicData }) {
   return (
@@ -43,6 +44,12 @@ function BasicInfoBox({ basicData }) {
             </div>
             <label className="boxItemTitle">Phone: </label>
             <label className="boxItemText">{basicData.phoneNumber}</label>
+          </div>
+          <div>
+            <div className="boxItem">
+              <EmailIcon color="action" />
+            </div>
+            <label className="boxItemTitle">{basicData.email} </label>
           </div>
         </div>
       </Box>

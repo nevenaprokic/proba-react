@@ -244,7 +244,7 @@ export function checkReservation(shipData) {
       );
     });
 }
-export function deleteShip(shipId) {
+export function deleteShip(shipId, setOffers, allOffers) {
   return api
     .delete("/ship/delete", {
       params: {
@@ -252,6 +252,7 @@ export function deleteShip(shipId) {
       },
     })
     .then((response) => {
+      console.log("USAO");
       toast.success(
         "You successfully deleted the ship!",
         {
@@ -259,10 +260,12 @@ export function deleteShip(shipId) {
           autoClose: 1500,
         }
       );
+      setOffers(allOffers.filter((offer)=> offer.id !== shipId));
     })
     .catch((err) => {
+      console.log("USAO");
       toast.error(
-        "Somethnig went wrong. Please wait a fiew seconds and try again.",
+        err.response.data,
         {
           position: toast.POSITION.BOTTOM_RIGHT,
           autoClose: 1500,
@@ -301,4 +304,69 @@ function updateAdditionalServices(offerId, additionalServiceDTOS){
                           autoClose: 1500,
                       });
                   });
+}
+
+export function getAllShips(page, pageSize) {
+  return api
+    .get("/ship/all-by-pages/",  {
+      params:{
+        page: page,
+        pageSize: pageSize
+      }
+    })
+    .then((response) => response)
+    .catch((err) => {
+      if (err.response.status === 401) {
+        return (<div>Greska u autentifikaciji</div>)
+      }
+      else if (err.response.status === 403) {
+        return (<div>Greska u autorizaciji</div>)
+      }
+      else if (err.response.status === 404) {
+        return (<div>Trenutno nema nepregledanih recenzija</div>)
+      }
+      else {
+        toast.error(err.response.data, {
+          position: toast.POSITION.BOTTOM_RIGHT,
+          autoClose: 1500,
+        })
+
+      }
+    }
+
+    )
+}
+
+export function deleteShipByAdmin(shipId, setAdventuers, allAdventures) {
+  api
+    .get("/ship/allowed-operation", {
+      params: {
+        shipId: shipId,
+      },
+    })
+    .then((response) => {
+      if (response.data) {
+        deleteShip(shipId, setAdventuers, allAdventures);
+        //setAdventuers(allAdventures.filter((offer)=> offer.id !== shipId));
+      }
+      else{
+        toast.error(
+          "Delete is not allowed besause offer has future reservations",
+          {
+            position: toast.POSITION.BOTTOM_RIGHT,
+            autoClose: 1500,
+          }
+        );
+      }
+    })
+    .catch((err) => {
+      console.log("tuu");
+      toast.error(
+        "Something went wrong, please try again later.",
+        {
+          position: toast.POSITION.BOTTOM_RIGHT,
+          autoClose: 1500,
+        }
+      );
+    });
 }

@@ -23,6 +23,9 @@ import { Modal } from "@mui/material";
 import ReservationReportsList from "../forms/reservations/ReservationReporstList";
 import ComplaintList from "../forms/review/ComplaintsList";
 import DeleteAccountRequests from "../forms/user/DeleteAccountRequests";
+import UsersOveview from "../forms/user/UsersOverview";
+import IncomeStatementAdmin from "../graphs/incomeStatement/IncomeStatementAdmin";
+import OffersOverview from "../forms/OffersOverview";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -127,8 +130,6 @@ export default function AdminHomePage() {
                     minWidth: "20%",
                   }}
                 >
-                  <Tab label="Home page" {...a11yProps(0)} />
-                  <Divider />
                   <Tab label="Profile page" {...a11yProps(1)} />
                   <Divider />
                   <Tab label="Users" {...a11yProps(2)} />
@@ -138,50 +139,49 @@ export default function AdminHomePage() {
                   <Tab label="Complaints" {...a11yProps(6)} />
                   <Tab label="Delete account requests" {...a11yProps(7)} />
                   <Divider />
-                  <Tab label="Loyalty program" {...a11yProps(8)} />
+                  <Tab label="Offers" {...a11yProps(8)} />
                   <Divider />
-                  <Tab label="Business reports" {...a11yProps(9)} />
+                  <Tab label="Loyalty program" {...a11yProps(9)} />
+                  <Divider />
+                  <Tab label="Business reports" {...a11yProps(10)} />
                   <Divider />
                   {adminData.defaultAdmin && (
                     <Tab label="Add new admin" {...a11yProps(10)} />
                   )}
                 </Tabs>
+
                 <TabPanel value={value} index={0}>
-                  <p
-                    style={{
-                      marginTop: "0px",
-                      marginBottom: "0px",
-                      fontSize: "30px",
-                      color: "#CC7351",
-                    }}
-                  >
-                    Search
-                    <SearchIcon />
-                  </p>
-                  <Divider />
-                  <br />
-                  <br />
-                </TabPanel>
-                <TabPanel value={value} index={2}>
                   <AdminProfile />
                 </TabPanel>
-                <TabPanel value={value} index={7}>
-                  <ReservationReportsList />
+                <TabPanel value={value} index={2}>
+                  <UsersOveview />
                 </TabPanel>
                 <TabPanel value={value} index={5}>
+                  <ReservationReportsList />
+                </TabPanel>
+                <TabPanel value={value} index={2}>
+                  {/* <UsersOveview /> */}
+                </TabPanel>
+                <TabPanel value={value} index={3}>
                   <RegistrationRequestsList />
                 </TabPanel>
-                <TabPanel value={value} index={6}>
+                <TabPanel value={value} index={4}>
                   <NotApprovedMarks />
                 </TabPanel>
-                <TabPanel value={value} index={8}>
+                <TabPanel value={value} index={6}>
                   <ComplaintList />
                 </TabPanel>
-                <TabPanel value={value} index={9}>
+                <TabPanel value={value} index={7}>
                   <DeleteAccountRequests />
                 </TabPanel>
                 <TabPanel value={value} index={11}>
                   <LoyalyProgeramPage />
+                </TabPanel>
+                <TabPanel value={value} index={9}>
+                  <OffersOverview />
+                </TabPanel>
+                <TabPanel value={value} index={13}>
+                  <IncomeStatementAdmin />
                 </TabPanel>
                 {adminData.defaultAdmin && (
                   <TabPanel value={value} index={15}>

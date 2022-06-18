@@ -45,6 +45,9 @@ import ConciseClientProfile from "../userProfile/ConciseClientProfile";
 function Row({ row, setRequests, disabled }) {
   const request = row;
   const [open, setOpen] = React.useState(false);
+  const [reportBtn, setReportBtn] = useState();
+  const [reviewtBtn, setReviewBtn] = useState();
+  const [complaintBtn, setComplaintBtn] = useState();
 
   const theme = createTheme({
     palette: {
@@ -58,14 +61,16 @@ function Row({ row, setRequests, disabled }) {
   const [openComplaint, setOpenComplaint] = React.useState(false);
   const [openClientProfile, setOpenClientProfile] = React.useState(false);
 
-  function handleOpenReview() {
+  function handleOpenReview(event) {
+    setReviewBtn(event.target);
     setOpenReview(true);
   }
   function handleCloseReview() {
     setOpenReview(false);
   }
 
-  function handleOpenComplaint() {
+  function handleOpenComplaint(event) {
+    setComplaintBtn(event.target);
     setOpenComplaint(true);
   }
   function handleCloseComplaint() {
@@ -79,7 +84,8 @@ function Row({ row, setRequests, disabled }) {
     setOpenClientProfile(false);
   }
 
-  const handleOpenForm = () => {
+  const handleOpenForm = (event) => {
+    setReportBtn(event.target);
     setOpenForm(true);
   };
 
@@ -123,7 +129,7 @@ function Row({ row, setRequests, disabled }) {
                     sx={{ float: "right" }}
                     color="primary"
                     size="small"
-                    onClick={() => handleOpenReview()}
+                    onClick={(event) => handleOpenReview(event)}
                   >
                     Review
                   </Button>
@@ -135,7 +141,7 @@ function Row({ row, setRequests, disabled }) {
                     sx={{ float: "right" }}
                     color="primary"
                     size="small"
-                    onClick={() => handleOpenComplaint()}
+                    onClick={(event) => handleOpenComplaint(event)}
                   >
                     Complain
                   </Button>
@@ -150,7 +156,7 @@ function Row({ row, setRequests, disabled }) {
                   sx={{ float: "right" }}
                   color="primary"
                   size="small"
-                  onClick={() => handleOpenForm()}
+                  onClick={(event) => handleOpenForm(event)}
                 >
                   Report
                 </Button>
@@ -167,7 +173,7 @@ function Row({ row, setRequests, disabled }) {
                 overflow: "auto",
               }}
             >
-              <ReviewForm close={handleCloseReview} offer={row} />
+              <ReviewForm close={handleCloseReview} offer={row} reviewBtn={reviewtBtn}/>
             </Modal>
 
             <Modal
@@ -180,7 +186,7 @@ function Row({ row, setRequests, disabled }) {
                 overflow: "auto",
               }}
             >
-              <ComplaintForm close={handleCloseComplaint} offer={row} />
+              <ComplaintForm close={handleCloseComplaint} offer={row} complaintBtn={complaintBtn}/>
             </Modal>
 
             <Modal
@@ -196,6 +202,7 @@ function Row({ row, setRequests, disabled }) {
               <ReservationReportForm
                 closeForm={handleCloseForm}
                 request={request}
+                reportBtn={reportBtn}
               />
             </Modal>
           </TableCell>

@@ -19,6 +19,7 @@ import DeleteShip from "../../forms/ship/DeleteShip";
 import { toast } from "react-toastify";
 import MapBox from "../cottageProfile/MapBox";
 import ChangeShipForm from "../../forms/ship/ChangeShipForm";
+import MarksContainer from "../cottageProfile/MarksContainer";
 import {
   isSubscribed,
   subscribe,
@@ -163,7 +164,7 @@ function ShipProfilePage({ id, close, childToParentMediaCard }) {
               </div>
 
               {getRoleFromToken() != null &&
-              getRoleFromToken() != userType.CLIENT ? (
+              getRoleFromToken() == userType.SHIP_OWNER ? (
                 <div className="changeBtn">
                   <Button
                     style={{ marginLeft: "35%" }}
@@ -248,6 +249,9 @@ function ShipProfilePage({ id, close, childToParentMediaCard }) {
               offer={shipData}
               additionalServices={createServiceData()}
             />
+            {getRoleFromToken() != null && (
+              <MarksContainer offerId={shipData.id} />
+            )}
           </div>
         </ThemeProvider>
       </div>

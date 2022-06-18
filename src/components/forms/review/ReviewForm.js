@@ -15,7 +15,7 @@ import { useForm } from "react-hook-form";
 import * as React from "react";
 import { makeReviewForOffer } from "../../../services/ClientService";
 
-function ReviewForm({ close, offer }) {
+function ReviewForm({ close, offer, reviewBtn }) {
   const [stars, setStars] = React.useState(0);
 
   const {
@@ -28,8 +28,16 @@ function ReviewForm({ close, offer }) {
 
   const onSubmit = (data) => {
     makeReviewForOffer(stars, offer.id, getValues("comment"));
+    disablereviewBtn();
     close();
   };
+
+  function disablereviewBtn(){
+    reviewBtn.disabled = true;
+    reviewBtn.style.color = "rgba(0, 0, 0, 0.26)";
+    reviewBtn.style.backgroundColor = "rgba(0, 0, 0, 0.12)";
+  }
+
 
   return (
     <Dialog open={true} maxWidth="sm" fullWidth>

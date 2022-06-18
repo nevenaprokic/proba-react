@@ -17,6 +17,7 @@ export default function FirstPage({ offers, setOffer, role }) {
   const [valueReservation, setValueReservation] = React.useState(new Date());
 
   const handlerOfferChange = (event, selectedOffer) => {
+    if (!selectedOffer) return;
     let currentOffer = offers.find((offer) => offer.name === selectedOffer);
     if (role === userType.INSTRUCTOR)
       currentOffer = offers.find((offer) => offer.offerName === selectedOffer);

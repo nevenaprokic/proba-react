@@ -17,7 +17,7 @@ import { addReport } from "../../../services/ReservationService";
 import { ThemeProvider } from "@emotion/react";
 import { createTheme } from "@mui/material/styles";
 
-export default function ReservationReportForm({ closeForm, request }) {
+export default function ReservationReportForm({ closeForm, request, reportBtn }) {
   const {
     register,
     getValues,
@@ -47,8 +47,15 @@ export default function ReservationReportForm({ closeForm, request }) {
     };
     console.log(params);
     addReport(params);
+    disableReportBtn();
     closeForm(params);
   };
+
+  function disableReportBtn(){
+    reportBtn.disabled = true;
+    reportBtn.style.color = "rgba(0, 0, 0, 0.26)";
+    reportBtn.style.backgroundColor = "rgba(0, 0, 0, 0.12)";
+  }
 
   function handleCancelClick() {
     closeForm();
@@ -58,10 +65,12 @@ export default function ReservationReportForm({ closeForm, request }) {
     palette: {
       primary: { main: "#CC7351" },
       secondary: { main: "#99A799" },
+      disable: {main: "rgba(0, 0, 0, 0.12)"}
     },
   });
 
   return (
+    !!reportBtn &&
     <ThemeProvider theme={theme}>
       <LocalizationProvider dateAdapter={AdapterDateFns}>
         <Grid

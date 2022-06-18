@@ -90,3 +90,13 @@ export function rejectMark(mark, setMarks, allUncheckedMarks){
                     });
                 })
 }
+
+export function getOfferMarks(offerId){
+    return api
+    .get("/mark/offer-marks", {
+        params:{
+            offerId : offerId
+        }
+    })
+    .then((response) => response)
+}

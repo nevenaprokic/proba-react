@@ -22,7 +22,7 @@ export function changeInstructorData(newOwnerData){
     let email = getUsernameFromToken();
     newOwnerData["email"] = email;
     api
-    .post("/instructor/change-data", newOwnerData)
+    .put("/instructor/change-data", newOwnerData)
     .then((responseData) => {toast.success(responseData.data, {
                                 position: toast.POSITION.BOTTOM_RIGHT,
                                 autoClose: 1500,
@@ -167,4 +167,69 @@ export function searchInstructorsClient(params, setOffers, setLastSearchedOffers
       });
       return;
   }
+}
+
+export function getAllInstructors(page, pageSize) {
+  return api
+    .get("/admin/all-instructors", {
+      params: {
+        page: page,
+        pageSize: pageSize
+      }
+    })
+    .then((response) => response)
+    .catch((err) => {
+      if (err.response.status === 401) {
+        return (<div>Greska u autentifikaciji</div>)
+      }
+      else if (err.response.status === 403) {
+        return (<div>Greska u autorizaciji</div>)
+      }
+      else if (err.response.status === 404) {
+        return (<div>Trenutno nema nepregledanih recenzija</div>)
+      }
+      else {
+        toast.error("Something went wrong, please try again later.", {
+          position: toast.POSITION.BOTTOM_RIGHT,
+          autoClose: 1500,
+        })
+
+      }
+    }
+
+    )
+}
+
+export function deleteInstructor(userId, allUsers, setUsers) {
+  return api
+    .delete("/instructor/delete-instructor/" + userId)
+    .then((response) => {
+              toast.success(response.data, {
+                position: toast.POSITION.BOTTOM_RIGHT,
+                autoClose: 1500,
+                          })
+                setUsers(allUsers.filter((user) => user.id !== userId));
+
+
+            })
+    .catch((err) => {
+      if (err.response.status === 401) {
+        return (<div>Greska u autentifikaciji</div>)
+      }
+      else if (err.response.status === 403) {
+        return (<div>Greska u autorizaciji</div>)
+      }
+      else if (err.response.status === 404) {
+        return (<div>Trenutno nema nepregledanih recenzija</div>)
+      }
+      else {
+        toast.error(err.response.data, {
+          position: toast.POSITION.BOTTOM_RIGHT,
+          autoClose: 1500,
+        })
+
+      }
+    }
+
+    )
 }

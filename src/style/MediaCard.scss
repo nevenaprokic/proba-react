@@ -1,3 +1,4 @@
+$orange :#CC7351;
 
 .descriptionContainer{
     overflow: hidden;
@@ -8,4 +9,10 @@
     -webkit-box-orient: vertical;
     min-height: 40px;
     max-height: 40px;
+}
+
+.commentTitle{
+    font-size: 15px;
+    font-weight: 500;
+    color: $orange;
 }

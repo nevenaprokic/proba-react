@@ -25,3 +25,13 @@ $darkGrrenGray: #5f6d5f;
     padding-top: 0px !important;
     padding-bottom: 0px !important;
 }
+
+.totalPrice{
+    color: $orange;
+    font-weight: bold;
+    font-size: large;
+    float: right;
+    border: solid medium $darkGreen;
+    border-radius: 8px;
+    padding: 5px;
+}

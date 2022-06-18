@@ -61,7 +61,7 @@ function checkSecondPage(reservation, num) {
   let startDateReservation = new Date(reservation.startDateReservation);
   const currentDate = new Date();
   if (startDateReservation <= currentDate) {
-    toast.error("Invalide date", {
+    toast.error("Invalid date, try again!", {
       position: toast.POSITION.BOTTOM_RIGHT,
       autoClose: 1500,
     });

@@ -14,7 +14,8 @@ export default function Review({ offer, additionalServicesInputList }) {
     additionalServicesInputList[0].servicePrice !== ""
   ) {
     additionalServicesInputList.map((additional) => {
-      totalPrice += parseInt(additional.servicePrice);
+      if (additional.servicePrice != "")
+        totalPrice += parseInt(additional.servicePrice);
     });
   }
 

@@ -32,7 +32,7 @@
     "react-router-dom": "^6.2.2",
     "react-scripts": "5.0.0",
     "react-show-more-text": "^1.5.2",
-    "react-toastify": "^9.0.4",
+    "react-toastify": "^8.2.0",
     "read-more-react": "^1.0.10",
     "sass": "^1.52.3",
     "toast": "^0.3.47",
@@ -62,5 +62,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://spring-back-isa-mrs.herokuapp.com/"
+  "proxy": "https://isa-spring-back.herokuapp.com/"
 }

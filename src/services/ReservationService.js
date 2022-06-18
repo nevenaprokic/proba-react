@@ -153,7 +153,6 @@ export function addReport(params){
     api
     .post("/reservation-report/add", params)
     .then((responseData) => {
-        console.log(responseData.data);
         toast.success(responseData.data, {
                         position: toast.POSITION.BOTTOM_RIGHT,
                         autoClose: 1500,

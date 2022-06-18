@@ -17,6 +17,7 @@ import { userType } from "../../../app/Enum";
 import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
 
+//toast.configure();
 const theme = createTheme({
   palette: {
     primary: { main: "#9DAB86" },

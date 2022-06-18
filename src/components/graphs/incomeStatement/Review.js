@@ -21,7 +21,7 @@ export default function Review({ data, startDate, endDate }) {
     (endDate.getMonth() + 1) +
     "/" +
     endDate.getFullYear();
-  
+
   return (
     <div className="reviewContainer">
       <Typography variant="h5" gutterBottom color={"#CC7351"}>
@@ -34,7 +34,7 @@ export default function Review({ data, startDate, endDate }) {
       <Divider />
       <Divider />
 
-      {!!data.map((offer) =>
+      {data.map((offer) =>
         offer.offerName !== "total" ? (
           <div>
             <Typography
@@ -84,14 +84,12 @@ export default function Review({ data, startDate, endDate }) {
             <List disablePadding>
               <ListItem key={"Offer price"} sx={{ py: 1, px: 0 }}>
                 <ListItemText primary={"Total number of reservation"} />
-                <Typography variant="body">
-                  {offer.numberOfReservation}
-                </Typography>
+                <Typography variant="body">{offer.numberOfReservation}</Typography>
               </ListItem>
               <ListItem key={"Offer price"} sx={{ py: 1, px: 0 }}>
                 <ListItemText primary={"Total earnings"} />
                 <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
-                  {offer.totalPrice + "€"}
+                  {offer.totalPrice+"€"}
                 </Typography>
               </ListItem>
             </List>

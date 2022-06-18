@@ -5,6 +5,7 @@ import logo from "../../logo2.png";
 import { getRoleFromToken } from "../../app/jwtTokenUtils";
 import LogoutIcon from "@mui/icons-material/Logout";
 
+
 function MainNavigationHome() {
   return (
     <header className={classes.header}>

@@ -41,8 +41,8 @@ function Row({ deleteRequest, setDeleteRequests, deleteRequests }) {
     },
   });
 
-  function handleOpenResponse(deteleAccount) {
-    setDeleteAccount(deleteAccount);
+  function handleOpenResponse(del) {
+    setDeleteAccount(del);
     setOpenResponse(true);
   }
 

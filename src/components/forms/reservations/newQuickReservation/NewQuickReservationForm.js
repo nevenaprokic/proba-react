@@ -80,21 +80,21 @@ function checkFirstPage(offer) {
     return false;
   }
   if (startDateAction < currentDate || startDateReservation <= currentDate) {
-    toast.error("Invalide date", {
+    toast.error("Invalid date, try again!", {
       position: toast.POSITION.BOTTOM_RIGHT,
       autoClose: 1500,
     });
     return false;
   }
   if (startDateAction >= startDateReservation) {
-    toast.error("Invalide date", {
+    toast.error("Invalid date, try again!", {
       position: toast.POSITION.BOTTOM_RIGHT,
       autoClose: 1500,
     });
     return false;
   }
   if (endDateAction >= startDateReservation >= startDateAction) {
-    toast.error("Invalide date", {
+    toast.error("Invalid date, try again!", {
       position: toast.POSITION.BOTTOM_RIGHT,
       autoClose: 1500,
     });

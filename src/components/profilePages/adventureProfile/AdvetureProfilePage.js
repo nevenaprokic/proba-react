@@ -1,7 +1,7 @@
 import "./AdventureProfilePage.scss";
 import ImagesBox from "./ImagesBox";
 import QuickActionBox from "../cottageProfile/QuickActionBox";
-import BasicAdventureInfiBox from "./BasicAdventureInfoBox";
+import BasicAdventureInfoBox from "./BasicAdventureInfoBox";
 import AdditionalDescriptionBox from "./AdditionalDescriptionBox";
 import PriceList from "../cottageProfile/Pricelist";
 import { Grid, Button } from "@mui/material";
@@ -22,6 +22,8 @@ import DeleteAdventure from "../../forms/adventure/DeleteAdventure";
 import Divider from "@mui/material/Divider";
 import { getRoleFromToken } from "../../../app/jwtTokenUtils";
 import { userType } from "../../../app/Enum";
+import ImagesGallery from "../../layout/ImageGallery";
+import MarksContainer from "../cottageProfile/MarksContainer";
 
 const theme = createTheme({
   palette: {
@@ -163,7 +165,7 @@ function AdventureProfilePage({ id, close, childToParentMediaCard }) {
                 />
               </div>
               {getRoleFromToken() != null &&
-              getRoleFromToken() != userType.CLIENT ? (
+              getRoleFromToken() == userType.INSTRUCTOR ? (
                 <div className="changeBtn">
                   <Button variant="contained" onClick={handleOpenForm}>
                     Change info
@@ -214,7 +216,8 @@ function AdventureProfilePage({ id, close, childToParentMediaCard }) {
               />
             </Modal>
 
-            <ImagesBox images={images} />
+            {/* <ImagesBox images={images} /> */}
+            <ImagesGallery photos={images}></ImagesGallery>
             <QuickActionBox offer={adventureData} />
             <MapBox
               street={adventureData.street}
@@ -223,7 +226,7 @@ function AdventureProfilePage({ id, close, childToParentMediaCard }) {
             />
             <Grid container xs={12}>
               <Grid item xs={12} sm={6}>
-                <BasicAdventureInfiBox basicInfo={adventureData} />
+                <BasicAdventureInfoBox basicInfo={adventureData} />
               </Grid>
               <Grid item xs={12} sm={6}>
                 <AdditionalDescriptionBox additionalDate={adventureData} />
@@ -233,6 +236,9 @@ function AdventureProfilePage({ id, close, childToParentMediaCard }) {
               offer={adventureData}
               additionalServices={createServiceData()}
             />
+            {getRoleFromToken() != null && (
+              <MarksContainer offerId={adventureData.id} />
+            )}
           </div>
         </ThemeProvider>
       </div>

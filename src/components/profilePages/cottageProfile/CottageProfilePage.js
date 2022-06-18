@@ -26,7 +26,9 @@ import {
   unsubscribe,
   isSubscribed,
 } from "../../../services/ClientService";
+import ImagesBox from "../adventureProfile/ImagesBox";
 import ImagesGallery from "../../layout/ImageGallery";
+import MarksContainer from "./MarksContainer";
 
 const theme = createTheme({
   palette: {
@@ -160,7 +162,7 @@ function CottageProfilePage({ id, close, childToParentMediaCard }) {
                 />
               </div>
               {getRoleFromToken() != null &&
-              getRoleFromToken() != userType.CLIENT ? (
+              getRoleFromToken() == userType.COTTAGE_OWNER ? (
                 <div className="changeBtn">
                   <Button
                     style={{ marginLeft: "35%" }}
@@ -244,6 +246,9 @@ function CottageProfilePage({ id, close, childToParentMediaCard }) {
               offer={cottageData}
               additionalServices={createServiceData()}
             />
+            {getRoleFromToken() != null && (
+              <MarksContainer offerId={cottageData.id} />
+            )}
           </div>
         </ThemeProvider>
       </div>

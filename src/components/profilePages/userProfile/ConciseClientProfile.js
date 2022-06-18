@@ -42,17 +42,9 @@ function ConciseClientProfile({ closeModal, clientEmail }) {
 
           <BasicInfoBox basicData={clientData}></BasicInfoBox>
 
-          <Grid item xs={12} sm={1} lg={1}>
-            <EmailIcon />
-            <br />
-            <br />
-          </Grid>
+          <Grid item xs={12} sm={1} lg={1}></Grid>
 
-          <Grid item xs={12} sm={4} lg={4}>
-            <Typography>
-              <label className="email">{clientData.email}</label>
-            </Typography>
-          </Grid>
+          <Grid item xs={12} sm={4} lg={4}></Grid>
 
           <AddressInfoBox addressData={clientData} />
 

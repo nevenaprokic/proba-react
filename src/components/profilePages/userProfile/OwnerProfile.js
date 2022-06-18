@@ -102,9 +102,6 @@ function OwnerProfile() {
           <BasicInfoBox basicData={ownerData}></BasicInfoBox>
 
           <Grid item xs={12} sm={1}>
-            <EmailIcon />
-            <br />
-            <br />
             <LockIcon />
             <br />
             <br />
@@ -116,9 +113,6 @@ function OwnerProfile() {
 
           <Grid item xs={12} sm={4}>
             <Typography>
-              <label className="email">{ownerData.email}</label>
-              <br />
-              <br />
               <Button
                 size="small"
                 sx={{ backgroundColor: "#99A799", color: "black" }}

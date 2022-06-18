@@ -5,7 +5,6 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import profileIcon from "../../images/profile.png";
-import EmailIcon from "@mui/icons-material/Email";
 import LockIcon from "@mui/icons-material/Lock";
 import BasicInfoBox from "./BasicInfoBox";
 import AddressInfoBox from "./AddressInfoBox";
@@ -79,9 +78,6 @@ function ClientProfile() {
           <BasicInfoBox basicData={clientData}></BasicInfoBox>
 
           <Grid item xs={12} sm={1} lg={1}>
-            <EmailIcon />
-            <br />
-            <br />
             <LockIcon />
             <br />
             <br />
@@ -93,9 +89,6 @@ function ClientProfile() {
 
           <Grid item xs={12} sm={4} lg={4}>
             <Typography>
-              <label className="email">{clientData.email}</label>
-              <br />
-              <br />
               <Button
                 size="small"
                 sx={{ backgroundColor: "#99A799", color: "black" }}

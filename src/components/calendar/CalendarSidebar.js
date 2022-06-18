@@ -52,7 +52,7 @@ export default function CalendarSidebar({
 
   const handlerOfferChange = (event, selectedOffer) => {
     async function set() {
-      console.log("naziv", selectedOffer.label);
+      if (!selectedOffer) return;
       const eventsData = await getCalendarEvents(selectedOffer.id, setEvents);
       let calendarItems = generateCalendarEvents(eventsData.data);
       setEvents(calendarItems);

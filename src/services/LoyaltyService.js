@@ -26,7 +26,7 @@ export function getAllClientCategories(){
 
 export function updateClientCategory(updateData,setLoyaltyCategories){
     api
-    .post("/loyalty/update-client-category", updateData)
+    .put("/loyalty/update-client-category", updateData)
     .then((responseData) => {
                             updateLoyaltyClientCategories(setLoyaltyCategories);
         
@@ -45,7 +45,7 @@ export function updateClientCategory(updateData,setLoyaltyCategories){
 
 export function updateOwnerCategory(updateData, setLoyaltyCategories ){
     api
-    .post("/loyalty/update-owner-category", updateData)
+    .put("/loyalty/update-owner-category", updateData)
     .then((responseData) => {
                             updateLoyaltyOwnerCategories(setLoyaltyCategories);
                             
@@ -129,8 +129,7 @@ export function addOwnerCategory(categoryData, setLoyaltyCategories ){
 
 export function deleteClientCategory(id, setLoyaltyCategories){
     api
-    .post("/loyalty/delete-client-category", id
-    )
+    .delete("/loyalty/delete-client-category/" + id)
     .then((responseMess) => {
                             updateLoyaltyClientCategories(setLoyaltyCategories);
                             toast.success(responseMess.data, {
@@ -147,8 +146,7 @@ export function deleteClientCategory(id, setLoyaltyCategories){
 
 export function deleteOwnerCategory(id, setLoyaltyCategories){
     api
-    .post("/loyalty/delete-owner-category", id
-    )
+    .delete("/loyalty/delete-owner-category/" + id)
     .then((responseMess) => {
                             updateLoyaltyOwnerCategories(setLoyaltyCategories);
                             toast.success(responseMess.data, {
@@ -161,34 +159,4 @@ export function deleteOwnerCategory(id, setLoyaltyCategories){
                         autoClose: 1500,
                     });
                 })
-}
-
-export function getClientCategoryInfo(categoryName){
-    api
-    .get("/loyalty/client-category-info", {
-        params: {
-            categoryName: categoryName
-        }
-    })
-    .then((responseData) => responseData)
-    .catch((err) =>  {toast.error(err.response.data, {
-        position: toast.POSITION.BOTTOM_RIGHT,
-        autoClose: 1500,
-    });
-})
-}
-
-export function getOwnerCategoryInfo(categoryName){
-    api
-    .get("/loyalty/owner-category-info", {
-        params: {
-            categoryName: categoryName
-        }
-    })
-    .then((responseData) => responseData)
-    .catch((err) =>  {toast.error(err.response.data, {
-        position: toast.POSITION.BOTTOM_RIGHT,
-        autoClose: 1500,
-    });
-})
 }

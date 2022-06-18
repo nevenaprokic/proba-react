@@ -8,19 +8,29 @@ export default function ImagesGallery({ photos }) {
   React.useEffect(() => {
     let shouldCancel = false;
 
-    setImages(
-      photos.map((blob) => ({
-        original: `${URL.createObjectURL(
-          b64toBlob(blob.image.split(",")[1], "image/png")
-        )}`,
-        thumbnail: `${URL.createObjectURL(
-          b64toBlob(blob.image.split(",")[1], "image/png")
-        )}`,
-      }))
-    );
+    if (photos.length == 0) {
+      let imag = require("../images/no-image.png");
+      setImages([
+        {
+          original: `${imag}`,
+          thumbnail: `${imag}`,
+        },
+      ]);
+    } else {
+      setImages(
+        photos.map((blob) => ({
+          original: `${URL.createObjectURL(
+            b64toBlob(blob.image.split(",")[1], "image/png")
+          )}`,
+          thumbnail: `${URL.createObjectURL(
+            b64toBlob(blob.image.split(",")[1], "image/png")
+          )}`,
+        }))
+      );
+    }
   }, []);
 
-  return (!!images ? <ImageGallery items={images} /> : null);
+  return !!images ? <ImageGallery items={images} /> : null;
 }
 
 const b64toBlob = (b64Data, contentType = "", sliceSize = 512) => {

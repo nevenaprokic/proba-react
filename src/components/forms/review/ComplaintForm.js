@@ -15,7 +15,7 @@ import { useForm } from "react-hook-form";
 import * as React from "react";
 import { makeComplaintForOffer } from "../../../services/ClientService";
 
-function ComplaintForm({ close, offer }) {
+function ComplaintForm({ close, offer, complaintBtn }) {
   const {
     register,
     handleSubmit,
@@ -26,8 +26,16 @@ function ComplaintForm({ close, offer }) {
 
   const onSubmit = (data) => {
     makeComplaintForOffer(offer.id, getValues("comment"));
+    disableComplaintBtn();
     close();
   };
+
+  function disableComplaintBtn(){
+    complaintBtn.disabled = true;
+    complaintBtn.style.color = "rgba(0, 0, 0, 0.26)";
+    complaintBtn.style.backgroundColor = "rgba(0, 0, 0, 0.12)";
+  }
+
 
   return (
     <Dialog open={true} maxWidth="sm" fullWidth>

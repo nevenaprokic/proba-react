@@ -43,14 +43,14 @@ function IncomeStatement() {
   function checkDate() {
     const currentDate = new Date();
     if (valueStartDate >= currentDate || valueEndDate >= currentDate) {
-      toast.error("Invalide date", {
+      toast.error("Invalid date, try again!", {
         position: toast.POSITION.BOTTOM_RIGHT,
         autoClose: 1500,
       });
       return false;
     }
     if (valueEndDate <= valueStartDate) {
-      toast.error("Invalide date", {
+      toast.error("Invalid date, try again!", {
         position: toast.POSITION.BOTTOM_RIGHT,
         autoClose: 1500,
       });

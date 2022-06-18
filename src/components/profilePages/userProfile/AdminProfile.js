@@ -65,9 +65,6 @@ function AdminProfile() {
           <BasicInfoBox basicData={adminData}></BasicInfoBox>
 
           <Grid item xs={12} sm={1}>
-            <EmailIcon />
-            <br />
-            <br />
             <LockIcon />
             <br />
             <br />
@@ -79,9 +76,6 @@ function AdminProfile() {
 
           <Grid item xs={12} sm={4}>
             <Typography>
-              <label className="email">{adminData.email}</label>
-              <br />
-              <br />
               <Button
                 size="small"
                 sx={{ backgroundColor: "#99A799", color: "black" }}

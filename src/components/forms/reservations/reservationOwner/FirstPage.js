@@ -6,6 +6,7 @@ import { userType } from "../../../../app/Enum";
 
 export default function FirstPage({ clients, setReservation, offers, role }) {
   const handlerOfferChange = (event, selectedOffer) => {
+    if (!selectedOffer) return;
     let email = selectedOffer.split("-")[0];
     let currentClient = clients.find((client) => client.email === email);
     setReservation((prevState) => {

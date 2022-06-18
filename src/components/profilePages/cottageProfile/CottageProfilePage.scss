@@ -296,7 +296,6 @@ $paleGreen: #dae0d2;
     margin-left: 5%;
     font-size: 25px;
    font-weight: bold;
-
 }
 
 .image-gallery {
@@ -306,14 +305,24 @@ $paleGreen: #dae0d2;
 }
 
 .image-gallery-slide img {
-    width: 50vw;
-    height: 45vh;
+    width: 40vw;
+    height: 40vh;
     object-fit: cover;
     overflow: hidden;
     object-position: center center;
 }
 
 .image-gallery-thumbnail img {
-    width: 10vh;
-    height: 10vh;
+    width: 8vh;
+    height: 8vh;
   }
+
+.markContainer{
+    border: solid medium #99A799;
+    border-radius: 25px;
+    max-width: 90%;
+    margin-left: 5%;
+    background-color: white;
+    margin-top: 10px;
+}
+
